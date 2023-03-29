@@ -2,21 +2,19 @@ package com.example.pengaduanmasyarakat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.pengaduanmasyarakat.Model.UserModel;
 import com.example.pengaduanmasyarakat.Util.DataApi;
-import com.example.pengaduanmasyarakat.Util.iterfaces.AuthInterface;
+import com.example.pengaduanmasyarakat.Util.interfaces.AuthInterface;
 
 import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Field;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -55,6 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
                 UserModel userModel = response.body();
                 if (userModel.getStatus().equals("success")) {
                     Toasty.success(RegisterActivity.this, "Berhasil registrasi", Toasty.LENGTH_SHORT).show();
+                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                 }else {
                     Toasty.error(RegisterActivity.this, "Gagal registrasi", Toasty.LENGTH_SHORT).show();
                 }
@@ -64,8 +63,8 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<UserModel> call, Throwable t) {
 
-//Show error
-                Log.e(TAG, "ini errornya: ", t);
+                Toasty.error(RegisterActivity.this, "Periksa koneksi anda", Toasty.LENGTH_SHORT).show();
+
             }
         });
 

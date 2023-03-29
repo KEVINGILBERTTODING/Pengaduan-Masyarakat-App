@@ -7,22 +7,24 @@ import java.io.Serializable;
 public class UserModel implements Serializable {
     @SerializedName("id_masyarakat")
     String idMasyarakat;
-@SerializedName("nama")
-String namaLengkap;
-@SerializedName("username")
+    @SerializedName("nama")
+    String namaLengkap;
+    @SerializedName("username")
     String userName;
-@SerializedName("password")
+    @SerializedName("password")
     String password;
-@SerializedName("no_telepon")
+    @SerializedName("no_telepon")
     String noTelp;
-@SerializedName("alamat")
+    @SerializedName("alamat")
     String alamat;
-@SerializedName("nik")
+    @SerializedName("nik")
     String nik;
-@SerializedName("status")
+    @SerializedName("status")
     String status;
+    @SerializedName("message")
+    String message;
 
-    public UserModel(String idMasyarakat, String namaLengkap, String userName, String password, String noTelp, String alamat, String nik, String status) {
+    public UserModel(String idMasyarakat, String namaLengkap, String userName, String password, String noTelp, String alamat, String nik, String status, String message) {
         this.idMasyarakat = idMasyarakat;
         this.namaLengkap = namaLengkap;
         this.userName = userName;
@@ -31,6 +33,7 @@ String namaLengkap;
         this.alamat = alamat;
         this.nik = nik;
         this.status = status;
+        this.message = message;
     }
 
     public String getIdMasyarakat() {
@@ -95,5 +98,13 @@ String namaLengkap;
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

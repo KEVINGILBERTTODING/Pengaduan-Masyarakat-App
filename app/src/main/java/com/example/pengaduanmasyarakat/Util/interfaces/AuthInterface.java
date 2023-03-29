@@ -1,4 +1,4 @@
-package com.example.pengaduanmasyarakat.Util.iterfaces;
+package com.example.pengaduanmasyarakat.Util.interfaces;
 
 import com.example.pengaduanmasyarakat.Model.UserModel;
 
@@ -23,6 +23,15 @@ public interface AuthInterface
             @Field("nik") String nik,
             @Field("alamat") String alamat
 
+    );
+
+
+    // login
+    @FormUrlEncoded
+    @POST("auth/login")
+    Call<UserModel>login(
+            @Field("username") String username,
+            @Field("password") String password
     );
 
 
