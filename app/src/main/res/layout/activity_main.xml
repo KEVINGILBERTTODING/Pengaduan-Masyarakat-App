@@ -7,9 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
+
+    <TextView
         android:layout_width="match_parent"
+        android:id="@+id/tvUsername"
+        android:fontFamily="@font/popsem"
+        android:textSize="@dimen/_15sdp"
         android:layout_height="wrap_content"/>
+
+
+
+
+
+
+
 
 
 </RelativeLayout>
