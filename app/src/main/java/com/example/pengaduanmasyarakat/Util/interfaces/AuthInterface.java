@@ -34,6 +34,24 @@ public interface AuthInterface
             @Field("password") String password
     );
 
+//    Ubah profile
+    @FormUrlEncoded
+    @POST("auth/updateProfile")
+    Call<UserModel> updateProfile(
+        @Field("nama") String namaLengkap,
+        @Field("no_telp") String noTelp,
+        @Field("alamat") String alamat,
+        @Field("id_masyarakat") String id_masyarakat
+    );
+
+    @FormUrlEncoded
+    @POST("auth/updatePassword")
+    Call<UserModel>updatePasswod(
+            @Field("password_old") String passwordOld,
+            @Field("password_new") String passwordNew,
+            @Field("id_masyarakat") String idMasyarakat
+    );
+
 
 
 

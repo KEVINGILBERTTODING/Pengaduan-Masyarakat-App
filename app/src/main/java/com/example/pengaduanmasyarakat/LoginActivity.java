@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (sharedPreferences.getBoolean("login", false)){
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
         }
     }
 

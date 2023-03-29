@@ -8,16 +8,21 @@
     tools:context=".MainActivity">
 
 
-    <TextView
+    <FrameLayout
+        android:id="@+id/frame_container"
         android:layout_width="match_parent"
-        android:id="@+id/tvUsername"
-        android:fontFamily="@font/popsem"
-        android:textSize="@dimen/_15sdp"
+        android:layout_height="match_parent"/>
+
+
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_bar"
         android:layout_height="wrap_content"/>
-
-
-
-
 
 
 
