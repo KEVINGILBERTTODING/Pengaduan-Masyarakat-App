@@ -11,4 +11,15 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="about_app">
+        Website Pengaduan adalah pengelolaan pengaduan pelayanan publik di daerah Kabupaten Grobogan,
+        setiap organisasi penyelenggara di Indonesia belum terkelola secara efektif dan terintegrasi.
+        Masing-masing organisasi penyelenggara mengelola pengaduan secara parsial dan tidak terkoordinir
+        dengan baik oleh Dinas Pekerja Umum Kabupaten Grobogan. Akibatnya terjadi duplikasi penanganan pengaduan,
+        atau bahkan bisa terjadi suatu pengaduan tidak ditangani oleh satupun organisasi penyelenggara, dengan alasan
+        pengaduan bukan kewenangannya. Oleh karena itu, untuk mencapai visi yang baik dan benar dalam penanganan pengaduan
+        masyarakat maka perlu untuk mengintegrasikan sistem pengelolaan pengaduan pelayanan publik yang efektif. Tujuannya,
+        masyarakat memiliki saluran pengaduan yang baik, benar, terorganisir dan terpercaya
+    </string>
 </resources>

@@ -21,6 +21,8 @@ import com.example.pengaduanmasyarakat.R;
 import com.example.pengaduanmasyarakat.Util.DataApi;
 import com.example.pengaduanmasyarakat.Util.interfaces.AuthInterface;
 
+import java.util.List;
+
 import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,10 +31,11 @@ import retrofit2.Response;
 
 public class ProfileUserFragment extends Fragment {
 
-    CardView btnUbahProfile, btnUbahPass;
+    CardView btnUbahProfile, btnUbahPass, btnTentang;
     SharedPreferences sharedPreferences;
     TextView txtUsername;
     UserModel userModel;
+    List<UserModel> userModelList;
 
 
 
@@ -47,7 +50,8 @@ public class ProfileUserFragment extends Fragment {
         btnUbahProfile = view.findViewById(R.id.btn_ubah_profile);
         btnUbahPass = view.findViewById(R.id.btnUbhPass);
         txtUsername = view.findViewById(R.id.txtUsername);
-        txtUsername.setText(username);
+        txtUsername.setText("Profil " + username);
+        btnTentang = view.findViewById(R.id.btnTentang);
         String userId = sharedPreferences.getString("user_id", null);
 
 
@@ -67,6 +71,33 @@ public class ProfileUserFragment extends Fragment {
                 etAlamat = dialog.findViewById(R.id.etu_alamat);
                 btnSubmit =  dialog.findViewById(R.id.btnSimpanUbahProfile);
                 dialog.show();
+
+                // tampilkan data user ke dalam edittext
+
+                AuthInterface ai = DataApi.getClient().create(AuthInterface.class);
+                ai.getUserById(userId).enqueue(new Callback<List<UserModel>>() {
+                    @Override
+                    public void onResponse(Call<List<UserModel>> call, Response<List<UserModel>> response) {
+                        userModelList = response.body();
+                        if (userModelList.size() != 0){
+                            etNamaLengkap.setText(userModelList.get(0).getNamaLengkap());
+                            etNoTelp.setText(userModelList.get(0).getNoTelp());
+                            etAlamat.setText((userModelList.get(0).getAlamat()));
+                            btnSubmit.setEnabled(true);
+
+                        } else {
+                            Toasty.error(getContext(), "Gagal mengambil data", Toasty.LENGTH_SHORT).show();
+                            btnSubmit.setEnabled(false);
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<UserModel>> call, Throwable t) {
+
+                        Log.e("test", "onFailure: ", t);
+                    }
+                });
 
                 btnSubmit.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -157,6 +188,26 @@ public class ProfileUserFragment extends Fragment {
                     }
                 });
             }
+        });
+        btnTentang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.layout_about);
+                dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                final Button btnAboutOk = dialog.findViewById(R.id.btn_about_ok);
+                dialog.show();
+                dialog.setCanceledOnTouchOutside(false);
+
+                btnAboutOk.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+            }
+
+
         });
 
 

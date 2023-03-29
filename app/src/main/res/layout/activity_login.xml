@@ -12,10 +12,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_15sdp"
-        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
         android:fontFamily="@font/popmed"
         android:text="Aplikasi \nPengaduan Masyarakat"
+        android:textColor="@color/black"
         android:textSize="@dimen/_13sdp" />
 
 
@@ -118,13 +121,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_8sdp"
+                        android:textSize="@dimen/_10sdp"
                         android:text="Belum memiliki akun?"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_8sdp"
+                        android:textSize="@dimen/_10sdp"
                         android:onClick="btnRegister"
                         android:layout_marginLeft="@dimen/_5sdp"
                         android:textColor="@color/main"
@@ -151,14 +154,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_8sdp"
+                        android:textSize="@dimen/_10sdp"
                         android:text="Masuk sebagai admin"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/popmed"
                         android:onClick="btnAdminLogin"
-                        android:textSize="@dimen/_8sdp"
+                        android:textSize="@dimen/_10sdp"
                         android:layout_marginLeft="@dimen/_5sdp"
                         android:textColor="@color/main"
                         android:text="Login"/>
