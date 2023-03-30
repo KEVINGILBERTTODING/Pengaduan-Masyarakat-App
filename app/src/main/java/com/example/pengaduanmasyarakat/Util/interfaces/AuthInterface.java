@@ -64,6 +64,18 @@ public interface AuthInterface
 
 
 
+    @FormUrlEncoded
+    @POST("user/user/insertsaran")
+    Call<UserModel>insertSaran (
+            @Field("nama") String nama,
+            @Field("no_telepon") String noTelp,
+            @Field("alamat") String alamat,
+            @Field("saran") String saran
+    );
+
+
+
+
 
 
 

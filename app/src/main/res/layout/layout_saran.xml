@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardCornerRadius="@dimen/_20sdp"
+        android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_20sdp"
+        android:orientation="vertical">
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:text="Saran"
+        android:fontFamily="@font/popsem"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13sdp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:text="Berikan saran terbaik Anda agar aplikasi Pengaduan bekerja lebih baik lagi."
+        android:layout_marginTop="@dimen/_10sdp"
+        android:fontFamily="@font/popmed"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:layout_height="wrap_content"/>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Nama lengkap"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/popmed"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"
+            android:layout_height="wrap_content"/>
+
+
+        <EditText
+            android:id="@+id/etNamaLengkap"
+            android:layout_width="match_parent"
+            android:hint="Nama lengkap"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/popmed"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Nomor telepon"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/popmed"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"
+            android:layout_height="wrap_content"/>
+
+
+        <EditText
+            android:id="@+id/etNoTelp"
+            android:layout_width="match_parent"
+            android:hint="No telepon"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/popmed"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Alamat"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/popmed"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"
+            android:layout_height="wrap_content"/>
+
+
+        <EditText
+            android:id="@+id/etAlamat"
+            android:layout_width="match_parent"
+            android:hint="Alamat anda..."
+            android:lines="3"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/popmed"
+            android:gravity="start"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"
+            android:layout_height="wrap_content"/>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Saran"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/popmed"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"
+            android:layout_height="wrap_content"/>
+
+
+        <EditText
+            android:id="@+id/etSaran"
+            android:layout_width="match_parent"
+            android:hint="Tulis saran anda...."
+            android:lines="3"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/popmed"
+            android:gravity="start"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"
+            android:layout_height="wrap_content"/>
+
+
+
+
+
+        <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSubmitSaran"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Simpan" android:textColor="@color/black"
+        app:cornerRadius="@dimen/_5sdp"
+        android:textAllCaps="false"
+        android:layout_marginTop="@dimen/_20sdp"/>
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

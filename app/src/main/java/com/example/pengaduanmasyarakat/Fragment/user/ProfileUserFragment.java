@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
+import androidx.core.widget.AutoScrollHelper;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -31,7 +32,7 @@ import retrofit2.Response;
 
 public class ProfileUserFragment extends Fragment {
 
-    CardView btnUbahProfile, btnUbahPass, btnTentang;
+    CardView btnUbahProfile, btnUbahPass, btnTentang, btnSaran;
     SharedPreferences sharedPreferences;
     TextView txtUsername;
     UserModel userModel;
@@ -52,7 +53,9 @@ public class ProfileUserFragment extends Fragment {
         txtUsername = view.findViewById(R.id.txtUsername);
         txtUsername.setText("Profil " + username);
         btnTentang = view.findViewById(R.id.btnTentang);
+        btnSaran = view.findViewById(R.id.btnSaran);
         String userId = sharedPreferences.getString("user_id", null);
+        String namaLengkap = sharedPreferences.getString("nama_lengkap", null);
 
 
 
@@ -207,6 +210,74 @@ public class ProfileUserFragment extends Fragment {
                 });
             }
 
+
+        });
+
+
+        btnSaran.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialogSaran = new Dialog(getContext());
+                dialogSaran.setContentView(R.layout.layout_saran);
+                dialogSaran.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                final EditText etNamaLengkap, etNoTelp, etAlamat, etSaran;
+                final Button btnSubmitSaran;
+                etNamaLengkap = dialogSaran.findViewById(R.id.etNamaLengkap);
+                etNoTelp = dialogSaran.findViewById(R.id.etNoTelp);
+                etAlamat = dialogSaran.findViewById(R.id.etAlamat);
+                etSaran = dialogSaran.findViewById(R.id.etSaran);
+                btnSubmitSaran = dialogSaran.findViewById(R.id.btnSubmitSaran);
+                dialogSaran.show();
+
+
+                btnSubmitSaran.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if (etNamaLengkap.getText().toString().isEmpty()) {
+                            Toasty.error(getContext(), "Field nama tidak boleh kosong", Toasty.LENGTH_LONG).show();
+                        } else if (etNoTelp.getText().toString().isEmpty()) {
+                            Toasty.error(getContext(), "Field no telepon tidak boleh kosong", Toasty.LENGTH_LONG).show();
+
+                        }else if (etAlamat.getText().toString().isEmpty()) {
+                            Toasty.error(getContext(), "Field alamat tidak boleh kosong", Toasty.LENGTH_LONG).show();
+
+                        }else if (etSaran.getText().toString().isEmpty()) {
+                            Toasty.error(getContext(), "Field saran tidak boleh kosong", Toasty.LENGTH_LONG).show();
+
+                        }else {
+                            AuthInterface authInterface = DataApi.getClient().create(AuthInterface.class);
+                            authInterface.insertSaran(
+                                    etNamaLengkap.getText().toString(),
+                                    etNoTelp.getText().toString(),
+                                    etAlamat.getText().toString(),
+                                    etSaran.getText().toString()
+                            ).enqueue(new Callback<UserModel>() {
+                                @Override
+                                public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+
+                                    UserModel userModel1 = response.body();
+                                    if (userModel1.getStatus().equals("success")) {
+                                        Toasty.success(getContext(), userModel1.getMessage(), Toasty.LENGTH_SHORT).show();
+                                        dialogSaran.dismiss();
+
+                                    }else {
+                                        Toasty.error(getContext(), userModel1.getMessage(), Toasty.LENGTH_SHORT).show();
+                                    }
+
+                                }
+
+                                @Override
+                                public void onFailure(Call<UserModel> call, Throwable t) {
+                                    Toasty.error(getContext(), "Periksa koneksi anda", Toasty.LENGTH_SHORT).show();
+
+                                }
+                            });
+                        }
+
+                    }
+                });
+            }
 
         });
 

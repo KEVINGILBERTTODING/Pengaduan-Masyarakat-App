@@ -126,6 +126,33 @@
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnSaran"
+                    android:layout_width="match_parent"
+                    app:cardUseCompatPadding="true"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardElevation="@dimen/_5sdp"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:padding="@dimen/_10sdp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tentang"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/popmed"
+                            android:textSize="@dimen/_12sdp"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/ic_arrow_rigth"/>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"

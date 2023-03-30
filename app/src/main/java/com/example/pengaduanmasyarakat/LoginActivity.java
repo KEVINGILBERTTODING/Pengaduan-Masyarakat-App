@@ -53,9 +53,12 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putBoolean("login", true);
                     editor.putBoolean("login_user", true);
                     editor.putString("user_id", userModel.getIdMasyarakat());
+                    editor.putString("nama_lengkap", userModel.getNamaLengkap());
+
                     editor.putString("username", userModel.getUserName());
                     editor.commit();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
                     Toasty.success(LoginActivity.this, userModel.getMessage(), Toasty.LENGTH_SHORT).show();
 
                 }else {
