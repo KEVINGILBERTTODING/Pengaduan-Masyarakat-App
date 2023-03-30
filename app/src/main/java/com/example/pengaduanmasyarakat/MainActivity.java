@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                if (item.getItemId() == R.id.menuBeranda) {
+                   replace(new HomeFragment());
                    Toasty.normal(getApplicationContext(), "Menu Beranda", Toasty.LENGTH_LONG).show();
                    return true;
                } else if (item.getItemId() == R.id.menuHome) {
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                    return false;
                } else if (item.getItemId() == R.id.menuProfile) {
                    replace(new ProfileUserFragment());
+                   return true;
                }
 
 

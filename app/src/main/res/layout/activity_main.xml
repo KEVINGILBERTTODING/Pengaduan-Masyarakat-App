@@ -11,6 +11,7 @@
     <FrameLayout
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
+        android:layout_above="@id/bottom_app_bar"
         android:layout_height="match_parent"/>
 
 

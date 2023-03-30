@@ -2,10 +2,10 @@ package com.example.pengaduanmasyarakat.Fragment.user;
 
 import static android.app.Activity.RESULT_OK;
 
-import static androidx.fragment.app.FragmentManager.TAG;
-
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -22,29 +22,31 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.pengaduanmasyarakat.Adapter.KecamatanAdapter;
 import com.example.pengaduanmasyarakat.Adapter.KelurahanAdapter;
 import com.example.pengaduanmasyarakat.Model.KecamatanModel;
 import com.example.pengaduanmasyarakat.Model.KelurahanModel;
-import com.example.pengaduanmasyarakat.Model.UserModel;
+import com.example.pengaduanmasyarakat.Model.PengaduanModel;
 import com.example.pengaduanmasyarakat.R;
 import com.example.pengaduanmasyarakat.Util.DataApi;
 import com.example.pengaduanmasyarakat.Util.interfaces.PengaduanInterface;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -61,6 +63,15 @@ public class CreatePengaduanFragment extends Fragment {
 
     KecamatanAdapter kecamatanAdapter;
     KelurahanAdapter kelurahanAdapter;
+    Button btnImagePicker1, btnImagePicker2, btnImagePicker3, btnSubmit;
+    EditText etDetailImage1, etDetailImage2, etDetailImage3, etIsiLaporan;
+    SharedPreferences sharedPreferences;
+
+    private File file1, file2, file3;
+    String idKelurahan, jeniKerusakan, id_masyarakat, masyarakatId ;
+
+
+
 
 
 
@@ -71,9 +82,33 @@ public class CreatePengaduanFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_create_pengaduan, container, false);
+
+        sharedPreferences = getContext().getSharedPreferences("user_data", Context.MODE_PRIVATE);
+        id_masyarakat = sharedPreferences.getString("user_id", null);
+
+
+
+
+
+
+
         spJenisKerusakan = view.findViewById(R.id.spinnerJenisKerusakan);
         spKecamatan = view.findViewById(R.id.spinnerKecamatan);
         spKelurahan = view.findViewById(R.id.spinnerKelurahan);
+        btnImagePicker1 = view.findViewById(R.id.btnImgPicker1);
+        btnImagePicker2 = view.findViewById(R.id.btnImgPicker2);
+        btnImagePicker3 = view.findViewById(R.id.btnImgPicker3);
+        btnSubmit = view.findViewById(R.id.btnSubmitPengaduan);
+        etDetailImage1 = view.findViewById(R.id.edtImgFile1);
+        etDetailImage2 = view.findViewById(R.id.edtImgFile2);
+        etDetailImage3 = view.findViewById(R.id.edtImgFile3);
+        etIsiLaporan = view.findViewById(R.id.etIsiLaporan);
+
+
+
+
+
+
 
         // membuat adapter untuk spinner jenis kerusakan
         ArrayAdapter<String>jenisKerusakanAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, jenisKerusakan);
@@ -109,6 +144,7 @@ public class CreatePengaduanFragment extends Fragment {
                         if (response.isSuccessful()) {
                             kelurahanAdapter = new KelurahanAdapter(getContext(), response.body());
                             spKelurahan.setAdapter(kelurahanAdapter);
+
                         }
                     }
 
@@ -126,6 +162,31 @@ public class CreatePengaduanFragment extends Fragment {
             }
         });
 
+        spKelurahan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                long kelurahanId = spKelurahan.getAdapter().getItemId(position);
+                idKelurahan = String.valueOf(kelurahanId);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spJenisKerusakan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                jeniKerusakan = spJenisKerusakan.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
 
 //        Test cek izin mengakses file external
@@ -135,8 +196,111 @@ public class CreatePengaduanFragment extends Fragment {
 
         }
 
+        // klik button image picker
+
+        btnImagePicker1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 1);
 
 
+            }
+        });
+        btnImagePicker2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 2);
+
+
+            }
+        });
+        btnImagePicker3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 3);
+
+
+
+            }
+        });
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (etDetailImage1.getText().toString().isEmpty()) {
+                    Toasty.error(getContext(), "Harap memilih gambar", Toasty.LENGTH_SHORT).show();
+                }else if (etDetailImage2.getText().toString().isEmpty()) {
+                    Toasty.error(getContext(), "Harap memilih gambar", Toasty.LENGTH_SHORT).show();
+                }else if (etDetailImage3.getText().toString().isEmpty()) {
+                    Toasty.error(getContext(), "Harap memilih gambar", Toasty.LENGTH_SHORT).show();
+                }else if (etIsiLaporan.getText().toString().isEmpty()) {
+                    Toasty.error(getContext(), "Harap mengisi laporan", Toasty.LENGTH_SHORT).show();
+                }
+                else {
+
+
+                    Map map = new HashMap();
+                    map.put("id_masyarakat", RequestBody.create(MediaType.parse("text/plain"), sharedPreferences.getString("user_id", null)));
+                    map.put("id_kelurahan", RequestBody.create(MediaType.parse("text/plain"), idKelurahan));
+                    map.put("jenis", RequestBody.create(MediaType.parse("text/plain"), jeniKerusakan));
+                    map.put("isi_laporan", RequestBody.create(MediaType.parse("text/plain"), etIsiLaporan.getText().toString()));
+
+
+
+                    // membuat request body file
+                    RequestBody RequestFile1 = RequestBody.create(MediaType.parse("image/*"), file1);
+                    RequestBody RequestFile1ile2 = RequestBody.create(MediaType.parse("image/*"), file2);
+                    RequestBody RequestFile1ile3 = RequestBody.create(MediaType.parse("image/*"), file3);
+
+                    // create multipart body
+                    MultipartBody.Part fileToUpload1 = MultipartBody.Part.createFormData("foto", file1.getName(), RequestFile1);
+                    MultipartBody.Part fileToUpload2 = MultipartBody.Part.createFormData("foto1", file2.getName(), RequestFile1ile2);
+                    MultipartBody.Part fileToUpload3 = MultipartBody.Part.createFormData("foto2", file3.getName(), RequestFile1ile3);
+                    PengaduanInterface pengaduanInterface = DataApi.getClient().create(PengaduanInterface.class);
+                    pengaduanInterface.createPengaduan(
+                            map,
+                            fileToUpload1,
+                            fileToUpload2,
+                            fileToUpload3
+                    ).enqueue(new Callback<PengaduanModel>() {
+                                  @Override
+                                  public void onResponse(Call<PengaduanModel> call, Response<PengaduanModel> response) {
+                                      PengaduanModel pengaduanModel = response.body();
+                                      if (pengaduanModel.getStatus().equals("success")) {
+                                          Toasty.success(getContext(), "Berhasil membuat pengaduan", Toasty.LENGTH_SHORT).show();
+                                          getFragmentManager().beginTransaction().replace(R.id.frame_container, new HomeFragment())
+                                                  .commit();
+                                      } else {
+                                          Toasty.error(getContext(), "Gagal membuat pengaduan", Toasty.LENGTH_SHORT).show();
+                                      }
+                                  }
+
+                                  @Override
+                                  public void onFailure(Call<PengaduanModel> call, Throwable t) {
+                                      Toasty.error(getContext(), "Gagal membuat pengaduan", Toasty.LENGTH_SHORT).show();
+                                  }
+                              }
+                    );
+
+
+
+
+
+
+
+
+
+                }
+
+
+
+
+            }
+        });
 
 
 
@@ -154,23 +318,26 @@ public class CreatePengaduanFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 200 && resultCode == RESULT_OK && data != null) {
+if (resultCode == RESULT_OK && data != null) {
             Uri uri = data.getData();
-            String path = getRealPathFromUri(uri);
-            File file = new File(path);
-            RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
-            MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("image", file.getName(), requestBody);
-            // Upload file to server using Retrofit
-
+            if (requestCode == 1) {
+//                ivImage1.setImageURI(uri);
+                file1 = new File(getRealPathFromUri(uri));
+                etDetailImage1.setText(file1.getName());
+            } else if (requestCode == 2) {
+//                ivImage2.setImageURI(uri);
+                file2 = new File(getRealPathFromUri(uri));
+                etDetailImage2.setText(file2.getName());
+            } else if (requestCode == 3) {
+//                ivImage3.setImageURI(uri);
+                file3 = new File(getRealPathFromUri(uri));
+                etDetailImage3.setText(file3.getName());
+            }
 
         }
     }
 
-    private void openGallery() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setType("image/*");
-        startActivityForResult(intent, 200);
-    }
+
 
     private String getRealPathFromUri(Uri uri) {
         String[] projection = {MediaStore.Images.Media.DATA};

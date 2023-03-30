@@ -17,7 +17,7 @@
         android:layout_marginEnd="@dimen/_15sdp"
         android:layout_marginBottom="@dimen/_15sdp"
         android:fontFamily="@font/popmed"
-        android:text="Tambah Pengaduan Baru "
+        android:text="Tambah \nPengaduan Baru "
         android:textColor="@color/black"
         android:textSize="@dimen/_13sdp" />
 
@@ -27,78 +27,232 @@
         android:layout_below="@+id/title1"
         android:padding="@dimen/_20sdp"
         android:background="@drawable/container_login"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_height="match_parent">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
+            android:scrollbars="vertical"
             android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Isi laporan"
+                    android:text="Lengkapi data berikut untuk membuat pengaduan baru."
                     android:textColor="@color/black"
-                    android:fontFamily="@font/popsem"
-                    android:textSize="@dimen/_13sdp"/>
-                <EditText
-                    android:id="@+id/etIsiLaporan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
-                    android:lines="4"
                     android:fontFamily="@font/popmed"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp"
-                    android:gravity="start"/>
+                    android:textSize="@dimen/_11sdp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Jenis kerusakan"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/popsem"
-                    android:textSize="@dimen/_13sdp"/>
 
-                <Spinner
-                    android:id="@+id/spinnerJenisKerusakan"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jenis kerusakan"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_11sdp"/>
+
+                    <Spinner
+                        android:id="@+id/spinnerJenisKerusakan"
+                        android:layout_width="match_parent"
+                        android:spinnerMode="dropdown"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"/>
+
+
+
+
+
+                <View
                     android:layout_width="match_parent"
-                    android:spinnerMode="dropdown"
-                    android:layout_height="wrap_content"/>
+                    android:background="@color/gray"
+                    android:layout_height="@dimen/_1sdp"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Kecamatan"
                     android:textColor="@color/black"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/popsem"
-                    android:textSize="@dimen/_13sdp"/>
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/popmed"
+                    android:textSize="@dimen/_11sdp"/>
 
                 <Spinner
                     android:id="@+id/spinnerKecamatan"
                     android:layout_width="match_parent"
                     android:spinnerMode="dropdown"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:layout_height="wrap_content"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:background="@color/gray"
+                    android:layout_height="@dimen/_1sdp"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Kelurahan"
                     android:textColor="@color/black"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/popsem"
-                    android:textSize="@dimen/_13sdp"/>
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/popmed"
+                    android:textSize="@dimen/_11sdp"/>
 
                 <Spinner
                     android:id="@+id/spinnerKelurahan"
                     android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:spinnerMode="dropdown"
                     android:layout_height="wrap_content"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:background="@color/gray"
+                    android:layout_height="@dimen/_1sdp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:background="@color/gray"
+                    android:layout_height="@dimen/_1sdp"/>
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Isi laporan"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/popmed"
+                    android:textSize="@dimen/_11sdp"/>
+                <EditText
+                    android:id="@+id/etIsiLaporan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="4"
+                    android:hint="Ketikkan sesuatu..."
+                    android:fontFamily="@font/popmed"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp"
+                    android:gravity="start"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto pendukung"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/popmed"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp"/>
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="wrap_content">
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnImgPicker1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pilih Foto"
+                        android:textColor="@color/black"
+                        app:cornerRadius="@dimen/_10sdp"
+                        app:backgroundTint="@color/gray"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_10sdp"
+                        android:textAllCaps="false"/>
+
+                    <EditText
+                        android:id="@+id/edtImgFile1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/btnImgPicker1"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:editable="false"
+                        android:maxLength="50"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_9sdp"/>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnImgPicker2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pilih Foto"
+                        android:textColor="@color/black"
+                        app:cornerRadius="@dimen/_10sdp"
+                        app:backgroundTint="@color/gray"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_10sdp"
+                        android:textAllCaps="false"/>
+
+                    <EditText
+                        android:id="@+id/edtImgFile2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/btnImgPicker2"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:editable="false"
+                        android:maxLength="50"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_9sdp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnImgPicker3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pilih foto"
+                        android:textColor="@color/black"
+                        app:cornerRadius="@dimen/_10sdp"
+                        app:backgroundTint="@color/gray"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_10sdp"
+                        android:textAllCaps="false"/>
+
+                    <EditText
+                        android:id="@+id/edtImgFile3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/btnImgPicker3"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:editable="false"
+                        android:maxLength="50"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_9sdp"/>
+                </RelativeLayout>
+
+
+                
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSubmitPengaduan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/popmed"
+                    android:textColor="@color/black"
+                    android:textAllCaps="false"
+                    app:cornerRadius="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="Simpan"/>
 
 
             </LinearLayout>

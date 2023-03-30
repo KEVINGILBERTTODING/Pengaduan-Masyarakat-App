@@ -24,7 +24,7 @@
                 android:id="@+id/txtUsername"
                 android:maxLength="15"
                 android:layout_marginLeft="@dimen/_10sdp"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_15sdp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/popmed"/>
         </RelativeLayout>
