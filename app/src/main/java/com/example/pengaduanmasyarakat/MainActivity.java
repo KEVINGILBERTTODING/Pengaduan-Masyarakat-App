@@ -10,9 +10,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 
+import com.example.pengaduanmasyarakat.Fragment.user.CreatePengaduanFragment;
+import com.example.pengaduanmasyarakat.Fragment.user.HomeFragment;
 import com.example.pengaduanmasyarakat.Fragment.user.ProfileUserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         sharedPreferences = getSharedPreferences("user_data", Context.MODE_PRIVATE);
         bottomNavigationView = findViewById(R.id.bottom_app_bar);
+
+        replace(new HomeFragment());
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
