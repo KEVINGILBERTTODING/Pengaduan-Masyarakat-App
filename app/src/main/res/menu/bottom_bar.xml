@@ -4,13 +4,13 @@
     <item
         android:id="@+id/menuHome"
         android:title="Home"
-        android:icon="@drawable/ic_person"/>
+        android:icon="@drawable/ic_home"/>
 
 
     <item
         android:id="@+id/menuBeranda"
-        android:title="Profile"
-        android:icon="@drawable/ic_lock"/>
+        android:title="Pengaduan"
+        android:icon="@drawable/ic_all_pengaduan"/>
     <item
         android:id="@+id/menuProfile"
         android:title="Profile"

@@ -11,9 +11,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.pengaduanmasyarakat.Adapter.AllPengaduanAdapter;
 import com.example.pengaduanmasyarakat.Fragment.user.CreatePengaduanFragment;
 import com.example.pengaduanmasyarakat.Fragment.user.HomeFragment;
 import com.example.pengaduanmasyarakat.Fragment.user.ProfileUserFragment;
+import com.example.pengaduanmasyarakat.Fragment.user.allPengaduanFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import es.dmoral.toasty.Toasty;
@@ -36,12 +38,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                if (item.getItemId() == R.id.menuBeranda) {
-                   replace(new HomeFragment());
-                   Toasty.normal(getApplicationContext(), "Menu Beranda", Toasty.LENGTH_LONG).show();
+                  replace(new allPengaduanFragment());
                    return true;
                } else if (item.getItemId() == R.id.menuHome) {
-                   Toasty.normal(getApplicationContext(), "Menu Home", Toasty.LENGTH_LONG).show();
-                   return false;
+                   replace(new HomeFragment());
+                   return true;
                } else if (item.getItemId() == R.id.menuProfile) {
                    replace(new ProfileUserFragment());
                    return true;

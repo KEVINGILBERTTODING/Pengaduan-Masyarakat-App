@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main"
+    tools:context=".Fragment.user.allPengaduanFragment">
+
+
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:fontFamily="@font/popmed"
+        android:text="Daftar Laporan Terbaru"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13sdp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/container_login"
+        android:layout_below="@id/title1"
+
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_20sdp"
+            android:fontFamily="@font/popmed"
+            android:text="Berikut adalah daftar pengaduan-pengaduan masyarakat berdasarkan laporan terbaru:"
+
+            android:textSize="@dimen/_10sdp" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rlAllPengaduan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

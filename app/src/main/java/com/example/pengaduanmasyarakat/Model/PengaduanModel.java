@@ -1,5 +1,7 @@
 package com.example.pengaduanmasyarakat.Model;
 
+import com.example.pengaduanmasyarakat.Util.DataApi;
+import com.example.pengaduanmasyarakat.Util.ServerApi;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -25,9 +27,17 @@ public class PengaduanModel implements Serializable {
     private String status;
     @SerializedName("tgl_pengaduan")
     private String tglPengaduan;
+    @SerializedName("nama_pelapor")
+    String namaPelapor;
+    @SerializedName("nama_kelurahan")
+    String namaKelurahan;
+    @SerializedName("status_pengaduan")
+    String statusPengaduan;
 
 
-    public PengaduanModel(String idPengaduan, String idMasyarakat, String idKelurahan, String isiLaporan, String jenis, String foto, String foto1, String foto2, String status, String tglPengaduan) {
+    public PengaduanModel(String idPengaduan, String idMasyarakat, String idKelurahan, String isiLaporan, String jenis, String foto, String foto1,
+                          String foto2, String status, String tglPengaduan, String namaPelapor,
+                          String namaKelurahan, String statusPengaduan) {
         this.idPengaduan = idPengaduan;
         this.idMasyarakat = idMasyarakat;
         this.idKelurahan = idKelurahan;
@@ -38,6 +48,9 @@ public class PengaduanModel implements Serializable {
         this.foto2 = foto2;
         this.status = status;
         this.tglPengaduan = tglPengaduan;
+        this.namaKelurahan = namaKelurahan;
+        this.namaPelapor = namaPelapor;
+        this.statusPengaduan = statusPengaduan;
 
     }
 
@@ -82,7 +95,7 @@ public class PengaduanModel implements Serializable {
     }
 
     public String getFoto() {
-        return foto;
+        return ServerApi.BASE_URL +"assets/img/img_pengaduan/" + foto;
     }
 
     public void setFoto(String foto) {
@@ -90,7 +103,7 @@ public class PengaduanModel implements Serializable {
     }
 
     public String getFoto1() {
-        return foto1;
+        return ServerApi.BASE_URL +"assets/img/img_pengaduan/" + foto1;
     }
 
     public void setFoto1(String foto1) {
@@ -98,7 +111,7 @@ public class PengaduanModel implements Serializable {
     }
 
     public String getFoto2() {
-        return foto2;
+        return ServerApi.BASE_URL +"assets/img/img_pengaduan/" + foto2;
     }
 
     public void setFoto2(String foto2) {
@@ -119,5 +132,29 @@ public class PengaduanModel implements Serializable {
 
     public void setTglPengaduan(String tglPengaduan) {
         this.tglPengaduan = tglPengaduan;
+    }
+
+    public String getNamaPelapor() {
+        return namaPelapor;
+    }
+
+    public void setNamaPelapor(String namaPelapor) {
+        this.namaPelapor = namaPelapor;
+    }
+
+    public String getNamaKelurahan() {
+        return namaKelurahan;
+    }
+
+    public void setNamaKelurahan(String namaKelurahan) {
+        this.namaKelurahan = namaKelurahan;
+    }
+
+    public String getStatusPengaduan() {
+        return statusPengaduan;
+    }
+
+    public void setStatusPengaduan(String statusPengaduan) {
+        this.statusPengaduan = statusPengaduan;
     }
 }

@@ -42,4 +42,7 @@ public interface PengaduanInterface {
             @Part MultipartBody.Part image2
 
             );
+
+    @GET("user/pengaduan/getAllPengaduan")
+    Call<List<PengaduanModel>> getAllPengaduan();
 }
