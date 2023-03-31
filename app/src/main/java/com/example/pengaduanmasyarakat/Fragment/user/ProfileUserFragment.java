@@ -2,6 +2,8 @@ package com.example.pengaduanmasyarakat.Fragment.user;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -17,10 +19,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.pengaduanmasyarakat.LoginActivity;
 import com.example.pengaduanmasyarakat.Model.UserModel;
 import com.example.pengaduanmasyarakat.R;
 import com.example.pengaduanmasyarakat.Util.DataApi;
 import com.example.pengaduanmasyarakat.Util.interfaces.AuthInterface;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.List;
 
@@ -32,9 +36,8 @@ import retrofit2.Response;
 
 public class ProfileUserFragment extends Fragment {
 
-    CardView btnUbahProfile, btnUbahPass, btnTentang, btnSaran;
+    CardView btnUbahProfile, btnUbahPass, btnTentang, btnSaran, btnLogout;
     SharedPreferences sharedPreferences;
-    TextView txtUsername;
     UserModel userModel;
     List<UserModel> userModelList;
 
@@ -50,8 +53,8 @@ public class ProfileUserFragment extends Fragment {
         String username = sharedPreferences.getString("username", null);
         btnUbahProfile = view.findViewById(R.id.btn_ubah_profile);
         btnUbahPass = view.findViewById(R.id.btnUbhPass);
-        txtUsername = view.findViewById(R.id.txtUsername);
-        txtUsername.setText("Profil " + username);
+        btnLogout = view.findViewById(R.id.btnLogout);
+
         btnTentang = view.findViewById(R.id.btnTentang);
         btnSaran = view.findViewById(R.id.btnSaran);
         String userId = sharedPreferences.getString("user_id", null);
@@ -281,7 +284,42 @@ public class ProfileUserFragment extends Fragment {
 
         });
 
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MaterialAlertDialogBuilder mb = new MaterialAlertDialogBuilder(getContext());
+                mb.setTitle("Logout");
+                mb.setMessage("Anda akan keluar dari aplikasi");
+
+                mb.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // intent ke login
+                        startActivity(new Intent(getContext(), LoginActivity.class));
+                        getActivity().finish();
+
+                        sharedPreferences.edit().clear().apply();
+
+                    }
+                }
+                );
+                mb.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                mb.show();
+
+            }
+        });
+
+
 
         return view;
     }
+
+
 }

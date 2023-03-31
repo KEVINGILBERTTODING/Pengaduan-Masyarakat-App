@@ -20,7 +20,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Username"
+                android:text="Profil"
                 android:id="@+id/txtUsername"
                 android:maxLength="15"
                 android:layout_marginLeft="@dimen/_10sdp"
@@ -155,6 +155,7 @@
 
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/btnLogout"
                     android:layout_width="match_parent"
                     app:cardUseCompatPadding="true"
                     app:cardCornerRadius="@dimen/_10sdp"
@@ -194,7 +195,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Aplikasi \n Pengaduan masyarakat"
+        android:text="Aplikasi \n Pengaduanku"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/_50sdp"
         android:gravity="center"

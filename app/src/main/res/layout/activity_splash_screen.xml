@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:fontFamily="@font/popsem"
             android:layout_marginTop="@dimen/_5sdp"
-            android:text="Aplikasi \nPengaduan Masyarakat"
+            android:text="Aplikasi\nPengaduanku"
             android:textColor="@color/black"
             android:gravity="center"
             android:layout_height="wrap_content"/>
