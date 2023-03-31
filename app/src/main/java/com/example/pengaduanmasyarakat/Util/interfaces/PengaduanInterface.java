@@ -45,4 +45,11 @@ public interface PengaduanInterface {
 
     @GET("user/pengaduan/getAllPengaduan")
     Call<List<PengaduanModel>> getAllPengaduan();
+
+    // get pengaduan ku
+    @GET("user/pengaduan/getPengaduanByUserId")
+    Call<List<PengaduanModel>> getMyPengaduan(
+            @Query("id_masyarakat") String idMasyarakat,
+            @Query("jenis") String jenis
+    );
 }

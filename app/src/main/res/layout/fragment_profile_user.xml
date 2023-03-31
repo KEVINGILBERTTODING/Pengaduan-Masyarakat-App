@@ -62,7 +62,7 @@
                             android:text="Ubah Profile"
                             android:textColor="@color/black"
                             android:fontFamily="@font/popmed"
-                            android:textSize="@dimen/_12sdp"/>
+                            android:textSize="@dimen/_10sdp"/>
 
                         <ImageView
                             android:layout_width="@dimen/_20sdp"
@@ -90,7 +90,7 @@
                             android:text="Ubah Password"
                             android:textColor="@color/black"
                             android:fontFamily="@font/popmed"
-                            android:textSize="@dimen/_12sdp"/>
+                            android:textSize="@dimen/_10sdp"/>
 
                         <ImageView
                             android:layout_width="@dimen/_20sdp"
@@ -116,7 +116,7 @@
                             android:text="Tentang"
                             android:textColor="@color/black"
                             android:fontFamily="@font/popmed"
-                            android:textSize="@dimen/_12sdp"/>
+                            android:textSize="@dimen/_10sdp"/>
 
                         <ImageView
                             android:layout_width="@dimen/_20sdp"
@@ -140,10 +140,10 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Tentang"
+                            android:text="Saran"
                             android:textColor="@color/black"
                             android:fontFamily="@font/popmed"
-                            android:textSize="@dimen/_12sdp"/>
+                            android:textSize="@dimen/_10sdp"/>
 
                         <ImageView
                             android:layout_width="@dimen/_20sdp"
@@ -171,7 +171,7 @@
                             android:text="Log Out"
                             android:textColor="@color/black"
                             android:fontFamily="@font/popmed"
-                            android:textSize="@dimen/_12sdp"/>
+                            android:textSize="@dimen/_10sdp"/>
 
                         <ImageView
                             android:layout_width="@dimen/_20sdp"

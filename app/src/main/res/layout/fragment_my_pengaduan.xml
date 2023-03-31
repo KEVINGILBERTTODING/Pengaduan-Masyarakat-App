@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main"
-    tools:context=".Fragment.user.allPengaduanFragment">
+    tools:context=".Fragment.user.MyPengaduanFragment">
 
 
 
@@ -18,7 +18,7 @@
         android:layout_marginEnd="@dimen/_15sdp"
         android:layout_marginBottom="@dimen/_15sdp"
         android:fontFamily="@font/popmed"
-        android:text="Daftar Laporan Terbaru"
+        android:text="Pengaduan Proses"
         android:textColor="@color/black"
         android:textSize="@dimen/_13sdp" />
 
@@ -37,12 +37,13 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/_20sdp"
             android:fontFamily="@font/popmed"
-            android:text="Berikut adalah daftar pengaduan-pengaduan masyarakat berdasarkan laporan terbaru:"
-            android:textSize="@dimen/_10sdp" />
+            android:text="Daftar Pengaduan"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp" />
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rlAllPengaduan"
+            android:id="@+id/rvMyPengaduan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
@@ -51,7 +52,5 @@
 
 
     </LinearLayout>
-
-
 
 </RelativeLayout>
