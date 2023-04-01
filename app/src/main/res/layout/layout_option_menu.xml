@@ -25,6 +25,12 @@
             android:textSize="@dimen/_12ssp"
             android:textColor="@color/black"/>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@color/gray"/>
+
 
 
 
@@ -32,9 +38,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Edit"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             app:cornerRadius="@dimen/_5sdp"
-            app:backgroundTint="@color/green"
+            app:backgroundTint="@color/orange"
             android:id="@+id/btnEditMyPengaduan"
             android:textAllCaps="false"/>
 
@@ -44,8 +50,8 @@
             android:layout_height="wrap_content"
             android:text="Detail"
             app:cornerRadius="@dimen/_5sdp"
-            app:backgroundTint="@color/gray"
-            android:id="@+id/btn_about_ok"
+            app:backgroundTint="@color/main"
+            android:id="@+id/btnDetailPengaduan"
             android:layout_marginTop="@dimen/_5sdp"
             android:textColor="@color/black"
             android:textAllCaps="false"/>

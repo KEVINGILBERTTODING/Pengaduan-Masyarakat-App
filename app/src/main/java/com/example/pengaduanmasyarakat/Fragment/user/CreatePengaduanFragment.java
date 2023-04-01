@@ -26,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.example.pengaduanmasyarakat.Adapter.KecamatanAdapter;
@@ -68,7 +69,8 @@ public class CreatePengaduanFragment extends Fragment {
     SharedPreferences sharedPreferences;
 
     private File file1, file2, file3;
-    String idKelurahan, jeniKerusakan, id_masyarakat, masyarakatId ;
+    String idKelurahan, jeniKerusakan, id_masyarakat;
+    ImageView ivPrev1, ivPrev2, ivPrev3;
 
 
 
@@ -103,6 +105,9 @@ public class CreatePengaduanFragment extends Fragment {
         etDetailImage2 = view.findViewById(R.id.edtImgFile2);
         etDetailImage3 = view.findViewById(R.id.edtImgFile3);
         etIsiLaporan = view.findViewById(R.id.etIsiLaporan);
+        ivPrev1 = view.findViewById(R.id.imgPrev1);
+        ivPrev2 = view.findViewById(R.id.imgPrev2);
+        ivPrev3 = view.findViewById(R.id.imgPrev3);
 
 
 
@@ -321,15 +326,18 @@ public class CreatePengaduanFragment extends Fragment {
 if (resultCode == RESULT_OK && data != null) {
             Uri uri = data.getData();
             if (requestCode == 1) {
-//                ivImage1.setImageURI(uri);
+                ivPrev1.setVisibility(View.VISIBLE);
+                ivPrev1.setImageURI(uri);
                 file1 = new File(getRealPathFromUri(uri));
                 etDetailImage1.setText(file1.getName());
             } else if (requestCode == 2) {
-//                ivImage2.setImageURI(uri);
+                ivPrev2.setVisibility(View.VISIBLE);
+                ivPrev2.setImageURI(uri);
                 file2 = new File(getRealPathFromUri(uri));
                 etDetailImage2.setText(file2.getName());
             } else if (requestCode == 3) {
-//                ivImage3.setImageURI(uri);
+                ivPrev3.setVisibility(View.VISIBLE);
+                ivPrev3.setImageURI(uri);
                 file3 = new File(getRealPathFromUri(uri));
                 etDetailImage3.setText(file3.getName());
             }

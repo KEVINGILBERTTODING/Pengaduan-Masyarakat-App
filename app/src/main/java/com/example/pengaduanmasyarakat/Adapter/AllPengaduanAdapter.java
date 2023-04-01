@@ -41,7 +41,7 @@ public class AllPengaduanAdapter extends RecyclerView.Adapter<AllPengaduanAdapte
     @Override
     public void onBindViewHolder(@NonNull AllPengaduanAdapter.ViewHolder holder, int position) {
 
-        holder.tvStatusPengaduan.setText(pengaduanModelList.get(position).getStatusPengaduan());
+
         holder.tvKelurahan.setText(pengaduanModelList.get(position).getNamaKelurahan());
         holder.tvIsiLaporan.setText(pengaduanModelList.get(position).getIsiLaporan());
 
@@ -61,18 +61,29 @@ public class AllPengaduanAdapter extends RecyclerView.Adapter<AllPengaduanAdapte
         if (pengaduanModelList.get(position).getStatusPengaduan().equals("proses")){
             holder.containerStatus.setBackgroundColor(holder.itemView.getResources().getColor(R.color.main));
             holder.tvStatusPengaduan.setTextColor(holder.itemView.getResources().getColor(R.color.white));
+            holder.tvStatusPengaduan.setText(pengaduanModelList.get(position).getStatusPengaduan());
 
         } else if (pengaduanModelList.get(position).getStatusPengaduan().equals("selesai")){
             holder.containerStatus.setBackgroundColor(holder.itemView.getResources().getColor(R.color.blue));
             holder.tvStatusPengaduan.setTextColor(holder.itemView.getResources().getColor(R.color.white));
-            
+            holder.tvStatusPengaduan.setText(pengaduanModelList.get(position).getStatusPengaduan());
+
+
         } else if (pengaduanModelList.get(position).getStatusPengaduan().equals("valid")){
             holder.containerStatus.setBackgroundColor(holder.itemView.getResources().getColor(R.color.green));
             holder.tvStatusPengaduan.setTextColor(holder.itemView.getResources().getColor(R.color.white));
+            holder.tvStatusPengaduan.setText(pengaduanModelList.get(position).getStatusPengaduan());
+
 
         }else if (pengaduanModelList.get(position).getStatusPengaduan().equals("pengerjaan")){
             holder.containerStatus.setBackgroundColor(holder.itemView.getResources().getColor(R.color.orange));
             holder.tvStatusPengaduan.setTextColor(holder.itemView.getResources().getColor(R.color.black));
+            holder.tvStatusPengaduan.setText(pengaduanModelList.get(position).getStatusPengaduan());
+
+
+        }else if (pengaduanModelList.get(position).getStatusPengaduan().equals("belum_ditanggapi")){
+            holder.tvStatusPengaduan.setText("Belum ditanggapi");
+
 
         }
     }

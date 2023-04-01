@@ -1,5 +1,6 @@
 package com.example.pengaduanmasyarakat.Fragment.user;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.os.RecoverySystem;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.pengaduanmasyarakat.Adapter.MyPengaduanAdapter;
@@ -38,6 +40,8 @@ public class MyPengaduanFragment extends Fragment {
     PengaduanInterface pengaduanInterface;
     SharedPreferences sharedPreferences;
     LinearLayoutManager linearLayoutManager;
+    ProgressDialog progressDialog;
+    TextView tvEmpty;
 
 
 
@@ -49,6 +53,13 @@ public class MyPengaduanFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_pengaduan, container, false);
         sharedPreferences = getContext().getSharedPreferences("user_data", Context.MODE_PRIVATE);
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setTitle("Memuat data...");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+        tvEmpty = view.findViewById(R.id.titleEmpty);
+
+
 
 
 
@@ -79,6 +90,13 @@ public class MyPengaduanFragment extends Fragment {
                     rvMyPengaduan.setLayoutManager(linearLayoutManager);
                     rvMyPengaduan.setAdapter(myPengaduanAdapter);
                     rvMyPengaduan.setHasFixedSize(true);
+                    progressDialog.dismiss();
+                    tvEmpty.setVisibility(View.GONE);
+
+
+                }else {
+                    progressDialog.dismiss();
+                    tvEmpty.setVisibility(View.VISIBLE);
 
                 }
             }
@@ -86,6 +104,9 @@ public class MyPengaduanFragment extends Fragment {
             @Override
             public void onFailure(Call<List<PengaduanModel>> call, Throwable t) {
                 Toasty.normal(getContext(), "Tidak ada pengaduan", Toasty.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                tvEmpty.setVisibility(View.VISIBLE);
+
 
             }
         });

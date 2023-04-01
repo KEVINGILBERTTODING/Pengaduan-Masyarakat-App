@@ -23,13 +23,17 @@
         android:textSize="@dimen/_13sdp" />
 
 
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:background="@drawable/container_login"
         android:layout_below="@id/title1"
-
         android:orientation="vertical"
         android:layout_height="match_parent">
+
+
 
         <TextView
             android:id="@+id/title2"
@@ -44,6 +48,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMyPengaduan"
+            android:paddingLeft="@dimen/_15sdp"
+            android:paddingRight="@dimen/_15sdp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
@@ -52,5 +58,18 @@
 
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/titleEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_20sdp"
+        android:fontFamily="@font/popmed"
+        android:visibility="gone"
+        android:text="tidak ada pengaduan"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/_10sdp" />
 
 </RelativeLayout>

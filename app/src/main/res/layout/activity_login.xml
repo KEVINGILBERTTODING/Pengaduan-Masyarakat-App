@@ -43,7 +43,7 @@
             android:text="Masukkan username dan password anda"
             android:fontFamily="@font/popmed"
             android:textColor="@color/black"
-            android:textSize="@dimen/_12ssp"/>
+            android:textSize="@dimen/_10ssp"/>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"

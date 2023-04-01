@@ -69,11 +69,17 @@ public class allPengaduanFragment extends Fragment {
                     recyclerView.setHasFixedSize(true);
                     pd.dismiss();
 
+                }else {
+                    pd.dismiss();
+
                 }
             }
 
             @Override
             public void onFailure(Call<List<PengaduanModel>> call, Throwable t) {
+                pd.dismiss();
+
+
 
             }
         });

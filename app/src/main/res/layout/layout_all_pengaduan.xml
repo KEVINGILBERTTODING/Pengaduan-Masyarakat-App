@@ -54,7 +54,7 @@
                                 android:layout_width="wrap_content"
                                 android:textSize="@dimen/_8sdp"
                                 android:textColor="@color/black"
-                                android:fontFamily="@font/popmedit"
+                                android:fontFamily="@font/popmed"
                                 android:text="Belum ditanggapi"
                                 android:layout_height="wrap_content"/>
 

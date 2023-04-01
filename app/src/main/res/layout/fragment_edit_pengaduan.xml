@@ -26,13 +26,12 @@
         android:orientation="vertical"
         android:layout_below="@+id/title1"
         android:padding="@dimen/_20sdp"
-        android:background="@drawable/container_login"
+        android:background="@drawable/container_home"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_height="match_parent">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:scrollbars="vertical"
             android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -128,8 +127,11 @@
                     android:id="@+id/etIsiLaporan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/container_edittext2"
                     android:inputType="textMultiLine"
                     android:lines="4"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:padding="@dimen/_5sdp"
                     android:hint="Ketikkan sesuatu..."
                     android:fontFamily="@font/popmed"
                     android:textColor="@color/black"
@@ -148,7 +150,9 @@
                 
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:background="@drawable/container_edittext"
                     android:layout_height="wrap_content"
+                    android:padding="@dimen/_6sdp"
                     android:orientation="vertical">
 
                     <TextView
@@ -161,17 +165,16 @@
                         android:textSize="@dimen/_9sdp"/>
                     <ImageView
                         android:id="@+id/img1"
-                        android:layout_width="@dimen/_120sdp"
-                        android:layout_height="@dimen/_120sdp"/>
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"/>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnImgPicker1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Pilih Foto"
-                        android:textColor="@color/black"
-                        app:cornerRadius="@dimen/_10sdp"
-                        app:backgroundTint="@color/gray"
+                        android:text="Ubah foto"
+                        app:cornerRadius="@dimen/_5sdp"
+                        app:backgroundTint="@color/main"
                         android:fontFamily="@font/popmed"
                         android:textSize="@dimen/_10sdp"
                         android:textAllCaps="false"/>
@@ -186,17 +189,16 @@
                         android:textSize="@dimen/_9sdp"/>
                     <ImageView
                         android:id="@+id/img2"
-                        android:layout_width="@dimen/_120sdp"
-                        android:layout_height="@dimen/_120sdp"/>
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"/>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnImgPicker2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Pilih Foto"
-                        android:textColor="@color/black"
-                        app:cornerRadius="@dimen/_10sdp"
-                        app:backgroundTint="@color/gray"
+                        app:cornerRadius="@dimen/_5sdp"
+                        app:backgroundTint="@color/main"
                         android:fontFamily="@font/popmed"
                         android:textSize="@dimen/_10sdp"
                         android:textAllCaps="false"/>
@@ -212,20 +214,31 @@
                         android:textSize="@dimen/_9sdp"/>
                     <ImageView
                         android:id="@+id/img3"
-                        android:layout_width="@dimen/_120sdp"
-                        android:layout_height="@dimen/_120sdp"/>
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"/>
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnImgPicker3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Pilih foto"
-                        android:textColor="@color/black"
-                        app:cornerRadius="@dimen/_10sdp"
-                        app:backgroundTint="@color/gray"
+                        app:cornerRadius="@dimen/_5sdp"
+                        app:backgroundTint="@color/main"
                         android:fontFamily="@font/popmed"
                         android:textSize="@dimen/_10sdp"
                         android:textAllCaps="false"/>
                 </LinearLayout>
+
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Perhatian! Jika anda mengubah pengaduan maka, tanggal pengaduan akan berubah."
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/popmed"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_8sdp"/>
 
 
 

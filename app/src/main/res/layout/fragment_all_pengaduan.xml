@@ -44,6 +44,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rlAllPengaduan"
             android:layout_width="match_parent"
+            android:paddingLeft="@dimen/_15sdp"
+            android:paddingRight="@dimen/_15sdp"
             android:layout_height="match_parent"/>
 
 

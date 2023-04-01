@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.pengaduanmasyarakat.Fragment.user.DetailPengaduanFragment;
 import com.example.pengaduanmasyarakat.Fragment.user.EditPengaduanFragment;
 import com.example.pengaduanmasyarakat.Model.PengaduanModel;
 import com.example.pengaduanmasyarakat.R;
@@ -48,7 +49,7 @@ public class MyPengaduanAdapter extends RecyclerView.Adapter<MyPengaduanAdapter.
     @Override
     public void onBindViewHolder(@NonNull MyPengaduanAdapter.ViewHolder holder, int position) {
 
-        holder.tvStatusPengaduan.setText(pengaduanModelList.get(position).getStatusPengaduan());
+
         holder.tvIsiLaporan.setText(pengaduanModelList.get(position).getIsiLaporan());
         holder.tvKelurahan.setText(pengaduanModelList.get(position).getNamaKelurahan());
 
@@ -68,20 +69,28 @@ public class MyPengaduanAdapter extends RecyclerView.Adapter<MyPengaduanAdapter.
         if (pengaduanModelList.get(position).getStatusPengaduan().equals("proses")){
             holder.containerStatus.setBackgroundColor(holder.itemView.getResources().getColor(R.color.main));
             holder.tvStatusPengaduan.setTextColor(holder.itemView.getResources().getColor(R.color.white));
+            holder.tvStatusPengaduan.setText(pengaduanModelList.get(position).getStatusPengaduan());
 
         } else if (pengaduanModelList.get(position).getStatusPengaduan().equals("selesai")){
             holder.containerStatus.setBackgroundColor(holder.itemView.getResources().getColor(R.color.blue));
             holder.tvStatusPengaduan.setTextColor(holder.itemView.getResources().getColor(R.color.white));
+            holder.tvStatusPengaduan.setText(pengaduanModelList.get(position).getStatusPengaduan());
 
         } else if (pengaduanModelList.get(position).getStatusPengaduan().equals("valid")){
             holder.containerStatus.setBackgroundColor(holder.itemView.getResources().getColor(R.color.green));
             holder.tvStatusPengaduan.setTextColor(holder.itemView.getResources().getColor(R.color.white));
+            holder.tvStatusPengaduan.setText(pengaduanModelList.get(position).getStatusPengaduan());
 
         }else if (pengaduanModelList.get(position).getStatusPengaduan().equals("pengerjaan")){
             holder.containerStatus.setBackgroundColor(holder.itemView.getResources().getColor(R.color.orange));
             holder.tvStatusPengaduan.setTextColor(holder.itemView.getResources().getColor(R.color.black));
+            holder.tvStatusPengaduan.setText(pengaduanModelList.get(position).getStatusPengaduan());
 
-        }
+         }else if (pengaduanModelList.get(position).getStatusPengaduan().equals("belum_ditanggapi")){
+        holder.tvStatusPengaduan.setText("Belum ditanggapi");
+
+
+    }
 
 
         holder.cvPengaduanItem.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +104,7 @@ public class MyPengaduanAdapter extends RecyclerView.Adapter<MyPengaduanAdapter.
                 dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                 final Button btnEditPengaduan, btnDetailPengaduan;
                 btnEditPengaduan = dialog.findViewById(R.id.btnEditMyPengaduan);
+                btnDetailPengaduan = dialog.findViewById(R.id.btnDetailPengaduan);
                 dialog.show();
 
                 if (pengaduanModelList.get(position).getStatusPengaduan().equals("belum_ditanggapi")) {
@@ -121,6 +131,30 @@ public class MyPengaduanAdapter extends RecyclerView.Adapter<MyPengaduanAdapter.
                                 .addToBackStack(null)
                                 .commit();
 
+                    }
+                });
+
+                btnDetailPengaduan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        Fragment fragment = new DetailPengaduanFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("id_pengaduan", pengaduanModelList.get(position).getIdPengaduan());
+                        bundle.putString("isi_laporan", pengaduanModelList.get(position).getIsiLaporan());
+                        bundle.putString("kelurahan", pengaduanModelList.get(position).getNamaKelurahan());
+                        bundle.putString("jenis", pengaduanModelList.get(position).getJenis());
+                        bundle.putString("status_pengaduan", pengaduanModelList.get(position).getStatusPengaduan());
+                        bundle.putString("tgl_pengaduan", pengaduanModelList.get(position).getTglPengaduan());
+                        bundle.putString("foto", pengaduanModelList.get(position).getFoto());
+                        bundle.putString("foto1", pengaduanModelList.get(position).getFoto1());
+                        bundle.putString("foto2", pengaduanModelList.get(position).getFoto2());
+                        fragment.setArguments(bundle);
+                        ((FragmentActivity) context).getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.frame_container, fragment)
+                                .addToBackStack(null)
+                                .commit();
                     }
                 });
 

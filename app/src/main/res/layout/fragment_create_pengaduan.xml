@@ -16,7 +16,7 @@
         android:layout_marginTop="@dimen/_15sdp"
         android:layout_marginEnd="@dimen/_15sdp"
         android:layout_marginBottom="@dimen/_15sdp"
-        android:fontFamily="@font/popmed"
+        android:fontFamily="@font/popsem"
         android:text="Tambah \nPengaduan Baru "
         android:textColor="@color/black"
         android:textSize="@dimen/_13sdp" />
@@ -26,13 +26,12 @@
         android:orientation="vertical"
         android:layout_below="@+id/title1"
         android:padding="@dimen/_20sdp"
-        android:background="@drawable/container_login"
+        android:background="@drawable/container_home"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_height="match_parent">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:scrollbars="vertical"
             android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,7 +53,7 @@
                         android:text="Jenis kerusakan"
                         android:textColor="@color/black"
                         android:layout_marginTop="@dimen/_20sdp"
-                        android:fontFamily="@font/popmed"
+                        android:fontFamily="@font/popsem"
                         android:textSize="@dimen/_11sdp"/>
 
                     <Spinner
@@ -79,7 +78,7 @@
                     android:text="Kecamatan"
                     android:textColor="@color/black"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:fontFamily="@font/popmed"
+                    android:fontFamily="@font/popsem"
                     android:textSize="@dimen/_11sdp"/>
 
                 <Spinner
@@ -100,7 +99,7 @@
                     android:text="Kelurahan"
                     android:textColor="@color/black"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:fontFamily="@font/popmed"
+                    android:fontFamily="@font/popsem"
                     android:textSize="@dimen/_11sdp"/>
 
                 <Spinner
@@ -128,14 +127,17 @@
                     android:text="Isi laporan"
                     android:textColor="@color/black"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:fontFamily="@font/popmed"
+                    android:fontFamily="@font/popsem"
                     android:textSize="@dimen/_11sdp"/>
                 <EditText
                     android:id="@+id/etIsiLaporan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:lines="4"
+                    android:background="@drawable/container_edittext2"
                     android:hint="Ketikkan sesuatu..."
                     android:fontFamily="@font/popmed"
                     android:textColor="@color/black"
@@ -147,99 +149,152 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Foto pendukung"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:fontFamily="@font/popmed"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:fontFamily="@font/popsem"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_11sdp"/>
 
 
-
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_height="wrap_content">
-
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnImgPicker1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pilih Foto"
-                        android:textColor="@color/black"
-                        app:cornerRadius="@dimen/_10sdp"
-                        app:backgroundTint="@color/gray"
-                        android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_10sdp"
-                        android:textAllCaps="false"/>
-
-                    <EditText
-                        android:id="@+id/edtImgFile1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/btnImgPicker1"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:editable="false"
-                        android:maxLength="50"
-                        android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_9sdp"/>
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_6sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_height="wrap_content">
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnImgPicker2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pilih Foto"
-                        android:textColor="@color/black"
-                        app:cornerRadius="@dimen/_10sdp"
-                        app:backgroundTint="@color/gray"
-                        android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_10sdp"
-                        android:textAllCaps="false"/>
+                    android:background="@drawable/container_edittext2"
+                    android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/edtImgFile2"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/btnImgPicker2"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:editable="false"
-                        android:maxLength="50"
-                        android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_9sdp"/>
-                </RelativeLayout>
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_height="wrap_content">
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnImgPicker3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pilih foto"
-                        android:textColor="@color/black"
-                        app:cornerRadius="@dimen/_10sdp"
-                        app:backgroundTint="@color/gray"
-                        android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_10sdp"
-                        android:textAllCaps="false"/>
+                        <LinearLayout
+                            android:id="@+id/rl1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/edtImgFile3"
+                            <ImageView
+                                android:id="@+id/imgPrev1"
+                                android:visibility="gone"
+                                android:layout_width="@dimen/_60sdp"
+                                android:layout_height="@dimen/_60sdp"/>
+
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnImgPicker1"
+                                android:layout_below="@+id/imgPrev1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pilih Foto"
+                                app:cornerRadius="@dimen/_5sdp"
+                                app:backgroundTint="@color/main"
+                                android:fontFamily="@font/popmed"
+                                android:textSize="@dimen/_10sdp"
+                                android:textAllCaps="false"/>
+
+                        </LinearLayout>
+
+
+
+                        <EditText
+                            android:id="@+id/edtImgFile1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/rl1"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:maxLength="50"
+                            android:fontFamily="@font/popmed"
+                            android:textSize="@dimen/_9sdp"/>
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/btnImgPicker3"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:editable="false"
-                        android:maxLength="50"
-                        android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_9sdp"/>
-                </RelativeLayout>
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:id="@+id/rl2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:id="@+id/imgPrev2"
+                                android:visibility="gone"
+                                android:layout_width="@dimen/_60sdp"
+                                android:layout_height="@dimen/_60sdp"/>
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnImgPicker2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pilih Foto"
+                                app:cornerRadius="@dimen/_5sdp"
+                                app:backgroundTint="@color/main"
+                                android:fontFamily="@font/popmed"
+                                android:textSize="@dimen/_10sdp"
+                                android:textAllCaps="false"/>
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/edtImgFile2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/rl2"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:editable="false"
+                            android:layout_alignParentBottom="true"
+                            android:maxLength="50"
+                            android:fontFamily="@font/popmed"
+                            android:textSize="@dimen/_9sdp"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/rl3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:id="@+id/imgPrev3"
+                                android:visibility="gone"
+                                android:layout_width="@dimen/_60sdp"
+                                android:layout_height="@dimen/_60sdp"/>
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnImgPicker3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pilih Foto"
+                                app:cornerRadius="@dimen/_5sdp"
+                                app:backgroundTint="@color/main"
+                                android:fontFamily="@font/popmed"
+                                android:textSize="@dimen/_10sdp"
+                                android:textAllCaps="false"/>
+                        </LinearLayout>
+
+
+                        <EditText
+                            android:id="@+id/edtImgFile3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/rl3"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:editable="false"
+                            android:maxLength="50"
+                            android:layout_alignParentBottom="true"
+                            android:fontFamily="@font/popmed"
+                            android:textSize="@dimen/_9sdp"/>
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+
 
 
                 
