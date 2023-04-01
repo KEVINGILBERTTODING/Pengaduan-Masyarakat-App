@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +16,18 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.pengaduanmasyarakat.Adapter.UserTanggapanAdapter;
+import com.example.pengaduanmasyarakat.Model.PengaduanModel;
+import com.example.pengaduanmasyarakat.Model.TanggapanModel;
 import com.example.pengaduanmasyarakat.R;
+import com.example.pengaduanmasyarakat.Util.DataApi;
+import com.example.pengaduanmasyarakat.Util.interfaces.TanggapanInterface;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetailPengaduanFragment extends Fragment {
 
@@ -24,6 +37,9 @@ public class DetailPengaduanFragment extends Fragment {
     EditText etIsiLaporan, etJenis, etTanggal, etKelurahan;
     String idPengaduan, isiLaporan, namaKelurahan, statusPengaduan, tglPengaduan, foto1, foto2, foto3,
     jenis;
+
+    List<TanggapanModel> tanggapanModelList;
+    RecyclerView rvTanggapan;
 
 
     @Override
@@ -48,6 +64,7 @@ public class DetailPengaduanFragment extends Fragment {
         etJenis = view.findViewById(R.id.etJenisLaporan);
         etKelurahan = view.findViewById(R.id.etKelurahan);
         etTanggal = view.findViewById(R.id.etTanggal);
+        rvTanggapan = view.findViewById(R.id.rvTanggapan);
         cvStatusPengaduan = view.findViewById(R.id.cvStatusPengaduan);
         icStatus = view.findViewById(R.id.icStatus);
         ivFoto1 = view.findViewById(R.id.foto1);
@@ -113,9 +130,30 @@ public class DetailPengaduanFragment extends Fragment {
         fullScreenImage(ivFoto2, foto2);
         fullScreenImage(ivFoto3, foto3);
 
+        // set tanggapan
+        TanggapanInterface ti = DataApi.getClient().create(TanggapanInterface.class);
+        ti.getTanggapanById(idPengaduan).enqueue(new Callback<List<TanggapanModel>>() {
+            @Override
+            public void onResponse(Call<List<TanggapanModel>> call, Response<List<TanggapanModel>> response) {
+                tanggapanModelList = response.body();
+               if (response.isSuccessful()) {
+                   if (tanggapanModelList.size() >0) {
+                       UserTanggapanAdapter userTanggapanAdapter = new UserTanggapanAdapter(getContext(), tanggapanModelList);
+                       LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+                       rvTanggapan.setLayoutManager(linearLayoutManager);
+                       rvTanggapan.setAdapter(userTanggapanAdapter);
+                       rvTanggapan.setHasFixedSize(true);
 
+                   }
+               }
+            }
 
-//
+            @Override
+            public void onFailure(Call<List<TanggapanModel>> call, Throwable t) {
+
+            }
+        });
+
 
 
         return view;

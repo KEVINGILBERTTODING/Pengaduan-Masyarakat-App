@@ -279,6 +279,7 @@
                     android:textSize="@dimen/_11sdp" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTanggapan"
                     android:layout_width="match_parent"
                     android:padding="@dimen/_5sdp"
                     android:background="@drawable/container_edittext2"
