@@ -1,18 +1,26 @@
 package com.example.pengaduanmasyarakat.Adapter;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.pengaduanmasyarakat.Fragment.user.EditPengaduanFragment;
 import com.example.pengaduanmasyarakat.Model.PengaduanModel;
 import com.example.pengaduanmasyarakat.R;
 
@@ -74,6 +82,51 @@ public class MyPengaduanAdapter extends RecyclerView.Adapter<MyPengaduanAdapter.
             holder.tvStatusPengaduan.setTextColor(holder.itemView.getResources().getColor(R.color.black));
 
         }
+
+
+        holder.cvPengaduanItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.layout_option_menu);
+                dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                final Button btnEditPengaduan, btnDetailPengaduan;
+                btnEditPengaduan = dialog.findViewById(R.id.btnEditMyPengaduan);
+                dialog.show();
+
+                if (pengaduanModelList.get(position).getStatusPengaduan().equals("belum_ditanggapi")) {
+                    btnEditPengaduan.setVisibility(View.VISIBLE);
+                } else {
+                    btnEditPengaduan.setVisibility(View.GONE);
+                }
+
+                btnEditPengaduan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        Fragment fragment = new EditPengaduanFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("id_pengaduan", pengaduanModelList.get(position).getIdPengaduan());
+                        bundle.putString("isi_laporan", pengaduanModelList.get(position).getIsiLaporan());
+                        bundle.putString("photo", pengaduanModelList.get(position).getFoto());
+                        bundle.putString("photo1", pengaduanModelList.get(position).getFoto1());
+                        bundle.putString("photo2", pengaduanModelList.get(position).getFoto2());
+                        fragment.setArguments(bundle);
+                        fragment.setArguments(bundle);
+                        FragmentTransaction ft = ((FragmentActivity)context).getSupportFragmentManager().beginTransaction();
+                        ft.replace(R.id.frame_container, fragment)
+                                .addToBackStack(null)
+                                .commit();
+
+                    }
+                });
+
+
+            }
+        });
     }
 
     @Override
@@ -86,6 +139,7 @@ public class MyPengaduanAdapter extends RecyclerView.Adapter<MyPengaduanAdapter.
         ImageView imgPengaduan;
         TextView tvStatusPengaduan, tvKelurahan, tvIsiLaporan;
         RelativeLayout containerStatus;
+        CardView cvPengaduanItem;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -95,6 +149,7 @@ public class MyPengaduanAdapter extends RecyclerView.Adapter<MyPengaduanAdapter.
             tvKelurahan = itemView.findViewById(R.id.txtKelurahan);
             tvIsiLaporan = itemView.findViewById(R.id.txtisiLaporan);
             containerStatus = itemView.findViewById(R.id.containerStatusPengaduan);
+            cvPengaduanItem = itemView.findViewById(R.id.cvPengaduanItem);
         }
 
         @Override
