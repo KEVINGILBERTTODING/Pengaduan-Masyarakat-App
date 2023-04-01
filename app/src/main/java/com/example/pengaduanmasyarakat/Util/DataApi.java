@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DataApi {
-    public static final String IP = "192.168.43.215";
+    public static final String IP = "192.168.1.12";
 
     public static final String BASE_URL ="http://" + IP + "/pengaduan/api/";
     public static Retrofit retrofit = null;

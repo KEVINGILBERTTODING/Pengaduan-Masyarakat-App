@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardCornerRadius="@dimen/_5sdp"
+        android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        android:orientation="vertical">
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pilih gambar"
+            android:fontFamily="@font/popmed"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/black"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivPreviewImg"
+                android:layout_width="@dimen/_60sdp"
+                android:src="@drawable/baseline_image_24"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_height="@dimen/_60sdp"/>
+
+            <EditText
+                android:id="@+id/etPathImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="50"
+                android:fontFamily="@font/popmed"
+                android:textSize="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_gravity="bottom"/>
+
+
+        </LinearLayout>
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih gambar"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:cornerRadius="@dimen/_5sdp"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/gray"
+            android:id="@+id/btnEditImagePicker"
+            android:textAllCaps="false"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:gravity="end"
+            android:orientation="horizontal">
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Batal"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:cornerRadius="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                app:backgroundTint="@color/orange"
+                android:id="@+id/btnEditCancel"
+                android:textAllCaps="false"/>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Simpan"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:cornerRadius="@dimen/_5sdp"
+                app:backgroundTint="@color/green"
+                android:id="@+id/btnEditSimpanPengaduan"
+                android:textAllCaps="false"/>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

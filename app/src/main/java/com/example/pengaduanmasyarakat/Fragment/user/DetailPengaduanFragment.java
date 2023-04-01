@@ -23,7 +23,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,7 +54,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EditPengaduanFragment extends Fragment {
+public class DetailPengaduanFragment extends Fragment {
 
 
     Spinner spJenisKerusakan, spKecamatan, spKelurahan;
@@ -123,7 +122,9 @@ public class EditPengaduanFragment extends Fragment {
 
 
         etIsiLaporan.setText(getArguments().getString("isi_laporan"));
-
+        setImage(getArguments().getString("photo"), ivImg1);
+        setImage(getArguments().getString("photo1"), ivImg2);
+        setImage(getArguments().getString("photo2"), ivImg3);
 
         // click image untuk zoom in dan zoom out
         fullScreenImage(idPengaduan, ivImg1, "foto");
@@ -139,8 +140,6 @@ public class EditPengaduanFragment extends Fragment {
         ivPreviewImg = dialog.findViewById(R.id.ivPreviewImg);
         btnEditSimpanPengaduan = dialog.findViewById(R.id.btnEditSimpanPengaduan);
         btnCancel = dialog.findViewById(R.id.btnEditCancel);
-
-        displayImage();
 
 
 
@@ -460,112 +459,6 @@ public class EditPengaduanFragment extends Fragment {
             }
         });
 
-        btnImagePicker3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                dialog.show();
-
-
-                btnEditImagePicker.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        startActivityForResult(intent, 1);
-
-
-                    }
-                });
-
-                btnEditSimpanPengaduan.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (etPathImage.getText().toString().isEmpty()) {
-                            Toasty.error(getContext(), "Anda belum memilih gambar", Toasty.LENGTH_SHORT).show();
-                        }else{
-                            progressDialog.show();
-                            Map map = new HashMap();
-                            map.put("id_pengaduan", RequestBody.create(MediaType.parse("text/plain"), idPengaduan));
-                            map.put("field", RequestBody.create(MediaType.parse("text/plain"), "foto2"));
-
-
-                            // membuat request body file
-                            RequestBody RequestFile1 = RequestBody.create(MediaType.parse("image/*"), file1);
-
-                            // create multipart body
-                            MultipartBody.Part fileToUpload1 = MultipartBody.Part.createFormData("foto", file1.getName(), RequestFile1);
-
-                            PengaduanInterface pengaduanInterface1 = DataApi.getClient().create(PengaduanInterface.class);
-                            pengaduanInterface1.updateImage(
-                                    map,
-                                    fileToUpload1
-                            ).enqueue(new Callback() {
-                                @Override
-                                public void onResponse(Call call, Response response) {
-                                   if (response.isSuccessful()) {
-
-
-
-                                       pengaduanInterface1.getPengaduanById(idPengaduan).enqueue(new Callback<List<PengaduanModel>>() {
-                                           @Override
-                                           public void onResponse(Call<List<PengaduanModel>> call, Response<List<PengaduanModel>> response) {
-                                               pengaduanModelList = response.body();
-                                               if (response.isSuccessful()) {
-                                                   Glide.with(getContext())
-                                                           .load(pengaduanModelList.get(0).getFoto2())
-                                                           .dontAnimate()
-                                                           .skipMemoryCache(true)
-                                                           .diskCacheStrategy(DiskCacheStrategy.NONE)
-                                                           .override(400, 400)
-                                                           .into(ivImg3);
-
-                                                   progressDialog.dismiss();
-
-                                                   Toasty.success(getContext(), "Berhasil mengubah gambar", Toasty.LENGTH_SHORT).show();
-                                                   dialog.dismiss();
-                                                   etPathImage.setText("");
-                                                   Glide.with(getContext())
-                                                           .load(R.drawable.baseline_image_24)
-                                                           .into(ivPreviewImg);
-
-
-                                               }
-
-                                           }
-
-                                           @Override
-                                           public void onFailure(Call<List<PengaduanModel>> call, Throwable t) {
-                                               Log.e("sdda", "onFailure: ", t);
-
-                                           }
-                                       });
-
-
-
-
-                                   }else {
-                                       Toasty.error(getContext(), "Gagal mengubah data", Toasty.LENGTH_SHORT).show();
-                                   }
-                                }
-
-                                @Override
-                                public void onFailure(Call call, Throwable t) {
-                                    Toasty.error(getContext(), "Periksa koneksi anda", Toasty.LENGTH_SHORT).show();
-
-
-                                }
-                            });
-
-                        }
-                    }
-                });
-
-
-
-
-            }
-        });
-
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -632,45 +525,14 @@ public class EditPengaduanFragment extends Fragment {
 
     }
 
-    // display image
-    private void displayImage() {
-        PengaduanInterface pengaduanInterface = DataApi.getClient().create(PengaduanInterface.class);
-        pengaduanInterface.getPengaduanById(idPengaduan).enqueue(new Callback<List<PengaduanModel>>() {
-            @Override
-            public void onResponse(Call<List<PengaduanModel>> call, Response<List<PengaduanModel>> response) {
-                pengaduanModelList = response.body();
-                if (pengaduanModelList.size() > 0) {
-                    Glide.with(getContext())
-                            .load(pengaduanModelList.get(0).getFoto())
-                            .dontAnimate()
-                            .diskCacheStrategy(DiskCacheStrategy.NONE)
-                            .skipMemoryCache(true)
-                            .into(ivImg1);
-
-
-                    Glide.with(getContext())
-                            .load(pengaduanModelList.get(0).getFoto1())
-                            .dontAnimate()
-                            .diskCacheStrategy(DiskCacheStrategy.NONE)
-                            .skipMemoryCache(true)
-                            .into(ivImg2);
-
-                    Glide.with(getContext())
-                            .load(pengaduanModelList.get(0).getFoto2())
-                            .dontAnimate()
-                            .diskCacheStrategy(DiskCacheStrategy.NONE)
-                            .skipMemoryCache(true)
-                            .into(ivImg3);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<PengaduanModel>> call, Throwable t) {
-
-            }
-        });
+    private void setImage(String image, ImageView ivImage){
+        Glide.with(getContext())
+                .load(image)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .override(400, 400)
+                .dontAnimate()
+                .into(ivImage);
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

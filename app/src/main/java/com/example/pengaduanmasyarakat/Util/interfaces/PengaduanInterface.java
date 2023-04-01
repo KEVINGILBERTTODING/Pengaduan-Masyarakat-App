@@ -12,6 +12,7 @@ import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -52,4 +53,32 @@ public interface PengaduanInterface {
             @Query("id_masyarakat") String idMasyarakat,
             @Query("jenis") String jenis
     );
+
+    @FormUrlEncoded
+    @POST("user/pengaduan/update")
+    Call<PengaduanModel> updatePengaduan(
+
+    @Field("isi_laporan") String isiLaporan,
+    @Field("id_pengaduan") String idPengaduan,
+    @Field("jenis") String jenisPengaduan,
+    @Field("id_masyarakat") String idMasyarakat,
+    @Field("id_kelurahan") String idKelurahan
+
+    );
+
+
+    @Multipart
+    @POST("user/pengaduan/updateImage")
+    Call<PengaduanModel>updateImage(
+            @PartMap Map<String, RequestBody> textData,
+            @Part MultipartBody.Part image
+
+    );
+
+    @GET("user/pengaduan/getPengaduanById")
+    Call<List<PengaduanModel>>getPengaduanById(
+            @Query("id_pengaduan") String idPengaduan
+    );
+
+
 }

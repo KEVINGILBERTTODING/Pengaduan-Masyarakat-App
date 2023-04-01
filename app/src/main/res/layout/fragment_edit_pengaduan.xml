@@ -133,7 +133,7 @@
                     android:hint="Ketikkan sesuatu..."
                     android:fontFamily="@font/popmed"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_11sdp"
+                    android:textSize="@dimen/_10sdp"
                     android:gravity="start"/>
 
 
@@ -164,6 +164,18 @@
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="@dimen/_120sdp"/>
 
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnImgPicker1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pilih Foto"
+                        android:textColor="@color/black"
+                        app:cornerRadius="@dimen/_10sdp"
+                        app:backgroundTint="@color/gray"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_10sdp"
+                        android:textAllCaps="false"/>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -176,6 +188,18 @@
                         android:id="@+id/img2"
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="@dimen/_120sdp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnImgPicker2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pilih Foto"
+                        android:textColor="@color/black"
+                        app:cornerRadius="@dimen/_10sdp"
+                        app:backgroundTint="@color/gray"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_10sdp"
+                        android:textAllCaps="false"/>
 
 
                     <TextView
@@ -190,76 +214,9 @@
                         android:id="@+id/img3"
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="@dimen/_120sdp"/>
-                </LinearLayout>
-
-
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_height="wrap_content">
-
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnImgPicker1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pilih Foto"
-                        android:textColor="@color/black"
-                        app:cornerRadius="@dimen/_10sdp"
-                        app:backgroundTint="@color/gray"
-                        android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_10sdp"
-                        android:textAllCaps="false"/>
-
-                    <EditText
-                        android:id="@+id/edtImgFile1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/btnImgPicker1"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:editable="false"
-                        android:maxLength="50"
-                        android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_9sdp"/>
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_height="wrap_content">
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnImgPicker2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pilih Foto"
-                        android:textColor="@color/black"
-                        app:cornerRadius="@dimen/_10sdp"
-                        app:backgroundTint="@color/gray"
-                        android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_10sdp"
-                        android:textAllCaps="false"/>
-
-                    <EditText
-                        android:id="@+id/edtImgFile2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/btnImgPicker2"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:editable="false"
-                        android:maxLength="50"
-                        android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_9sdp"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_height="wrap_content">
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnImgPicker3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Pilih foto"
                         android:textColor="@color/black"
@@ -268,18 +225,9 @@
                         android:fontFamily="@font/popmed"
                         android:textSize="@dimen/_10sdp"
                         android:textAllCaps="false"/>
+                </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/edtImgFile3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/btnImgPicker3"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:editable="false"
-                        android:maxLength="50"
-                        android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_9sdp"/>
-                </RelativeLayout>
+
 
 
                 
