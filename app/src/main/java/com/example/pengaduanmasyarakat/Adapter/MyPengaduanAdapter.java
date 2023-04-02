@@ -184,10 +184,14 @@ public class MyPengaduanAdapter extends RecyclerView.Adapter<MyPengaduanAdapter.
             tvIsiLaporan = itemView.findViewById(R.id.txtisiLaporan);
             containerStatus = itemView.findViewById(R.id.containerStatusPengaduan);
             cvPengaduanItem = itemView.findViewById(R.id.cvPengaduanItem);
+
+
         }
 
         @Override
         public void onClick(View v) {
+
+
 
         }
     }

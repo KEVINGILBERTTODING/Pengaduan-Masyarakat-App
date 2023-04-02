@@ -186,7 +186,6 @@
                             android:textSize="@dimen/_10sdp"
                             android:padding="@dimen/_5sdp"
                             android:gravity="start"
-                            android:editable="false"
                             android:background="@drawable/container_edittext2"
                             android:fontFamily="@font/popmed"
                             android:text="dasdsadasdas"

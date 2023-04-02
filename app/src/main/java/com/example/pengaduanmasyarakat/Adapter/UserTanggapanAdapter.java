@@ -1,18 +1,24 @@
 package com.example.pengaduanmasyarakat.Adapter;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.pengaduanmasyarakat.Fragment.user.FullScreenImageAllFragment;
 import com.example.pengaduanmasyarakat.Model.TanggapanModel;
 import com.example.pengaduanmasyarakat.R;
 
@@ -61,7 +67,7 @@ public class UserTanggapanAdapter extends RecyclerView.Adapter<UserTanggapanAdap
         return tanggapanModelList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvUsername, tvStatusPengaduan, tvTglPengaduan, tvIsiTgpn;
         ImageView ivTanggapan, icStatus;
         CardView cvTanggapanStatus;
@@ -75,6 +81,63 @@ public class UserTanggapanAdapter extends RecyclerView.Adapter<UserTanggapanAdap
             tvIsiTgpn =itemView.findViewById(R.id.txtisiTanggapan);
             ivTanggapan = itemView.findViewById(R.id.imgTanggapan);
             icStatus = itemView.findViewById(R.id.icStatus);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Dialog dialog = new Dialog(context);
+            dialog.setContentView(R.layout.layout_det_tanggapan);
+            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            final Button btnOk;
+            final TextView tvUsername, tvTgl, tvIsiTanggapan;
+            final ImageView imgTanggapan;
+            btnOk = dialog.findViewById(R.id.btn_tanggapan_ok);
+            tvUsername = dialog.findViewById(R.id.tvUsername);
+            tvTgl = dialog.findViewById(R.id.tvTglTanggapan);
+            tvIsiTanggapan = dialog.findViewById(R.id.tvIsiTanggapan);
+            imgTanggapan = dialog.findViewById(R.id.imgTanggapan);
+
+            tvUsername.setText(tanggapanModelList.get(getAdapterPosition()).getUsername());
+            tvTgl.setText(tanggapanModelList.get(getAdapterPosition()).getTglTanggapan());
+            tvIsiTanggapan.setText(tanggapanModelList.get(getAdapterPosition()).getIsiTanggapan());
+
+            Glide.with(context)
+                    .load(tanggapanModelList.get(getAdapterPosition()).getFotoTanggapan())
+                    .override(200,200)
+                    .skipMemoryCache(true)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .centerCrop()
+                    .fitCenter()
+                    .dontAnimate()
+                    .into(imgTanggapan);
+
+            dialog.show();
+            imgTanggapan.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Fragment fragment = new FullScreenImageAllFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("image", tanggapanModelList.get(getAdapterPosition()).getFotoTanggapan());
+                    fragment.setArguments(bundle);
+                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.frame_container, fragment)
+                            .addToBackStack(null)
+                            .commit();
+
+                    dialog.dismiss();
+                }
+            });
+
+            btnOk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+
         }
     }
 }
