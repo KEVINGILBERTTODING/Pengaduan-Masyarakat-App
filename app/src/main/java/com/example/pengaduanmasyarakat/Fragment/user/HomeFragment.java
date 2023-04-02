@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
     SharedPreferences sharedPreferences;
     PengaduanInterface pengaduanInterface;
     List<PengaduanModel> pengaduanModelList;
-    CardView cvMenuProses, cvMenuSelesai, cvMenuValid, cvMenuPengerjaan, cvMenuBlmDitgp, cvMnuTdkValid;
+    CardView cvMenuProses, cvMenuSelesai, cvMenuValid, cvMenuPengerjaan, cvMenuBlmDitgp, cvMnuTdkValid, cvMenuLaporan;
 
 
     @Override
@@ -58,6 +58,7 @@ public class HomeFragment extends Fragment {
         cvMenuPengerjaan = view.findViewById(R.id.cvMnuPengerjaan);
         cvMenuBlmDitgp =view.findViewById(R.id.cvMnuBlmDitgp);
         cvMnuTdkValid = view.findViewById(R.id.cvMenuTdkalid);
+        cvMenuLaporan = view.findViewById(R.id.cvMenuLaporan);
 
 
         fabAdd = view.findViewById(R.id.fabAdd);
@@ -121,6 +122,16 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 showMyPengaduan("Pengaduan Tidak Valid", "tidak_valid", new MyPengaduanFragment());
+            }
+        });
+
+        cvMenuLaporan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.frame_container, new LaporanFragment())
+                        .commit();
             }
         });
 
