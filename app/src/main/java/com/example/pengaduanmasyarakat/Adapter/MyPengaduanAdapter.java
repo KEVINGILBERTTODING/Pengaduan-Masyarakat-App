@@ -67,27 +67,49 @@ public class MyPengaduanAdapter extends RecyclerView.Adapter<MyPengaduanAdapter.
 
 
         if (pengaduanModelList.get(position).getStatusPengaduan().equals("proses")){
-            holder.containerStatus.setBackgroundColor(holder.itemView.getResources().getColor(R.color.main));
+
             holder.tvStatusPengaduan.setTextColor(holder.itemView.getResources().getColor(R.color.white));
             holder.tvStatusPengaduan.setText(pengaduanModelList.get(position).getStatusPengaduan());
+            holder.vPengaduan.setBackgroundColor(context.getResources().getColor(R.color.main));
+            holder.cvTanggapanStatus.setCardBackgroundColor(context.getResources().getColor(R.color.main));
+            holder.icStatus.setImageDrawable(context.getDrawable(R.drawable.process));
 
         } else if (pengaduanModelList.get(position).getStatusPengaduan().equals("selesai")){
-            holder.containerStatus.setBackgroundColor(holder.itemView.getResources().getColor(R.color.blue));
             holder.tvStatusPengaduan.setTextColor(holder.itemView.getResources().getColor(R.color.white));
             holder.tvStatusPengaduan.setText(pengaduanModelList.get(position).getStatusPengaduan());
+            holder.vPengaduan.setBackgroundColor(context.getResources().getColor(R.color.blue));
+            holder.cvTanggapanStatus.setCardBackgroundColor(context.getResources().getColor(R.color.blue));
+            holder.icStatus.setImageDrawable(context.getDrawable(R.drawable.baseline_calendar_month_24));
+
 
         } else if (pengaduanModelList.get(position).getStatusPengaduan().equals("valid")){
-            holder.containerStatus.setBackgroundColor(holder.itemView.getResources().getColor(R.color.green));
             holder.tvStatusPengaduan.setTextColor(holder.itemView.getResources().getColor(R.color.white));
             holder.tvStatusPengaduan.setText(pengaduanModelList.get(position).getStatusPengaduan());
+            holder.vPengaduan.setBackgroundColor(context.getResources().getColor(R.color.green));
+            holder.cvTanggapanStatus.setCardBackgroundColor(context.getResources().getColor(R.color.green));
+            holder.icStatus.setImageDrawable(context.getDrawable(R.drawable.check));
+
 
         }else if (pengaduanModelList.get(position).getStatusPengaduan().equals("pengerjaan")){
-            holder.containerStatus.setBackgroundColor(holder.itemView.getResources().getColor(R.color.orange));
             holder.tvStatusPengaduan.setTextColor(holder.itemView.getResources().getColor(R.color.black));
             holder.tvStatusPengaduan.setText(pengaduanModelList.get(position).getStatusPengaduan());
+            holder.vPengaduan.setBackgroundColor(context.getResources().getColor(R.color.orange));
+            holder.cvTanggapanStatus.setCardBackgroundColor(context.getResources().getColor(R.color.orange));
+            holder.icStatus.setImageDrawable(context.getDrawable(R.drawable.hammer));
 
-         }else if (pengaduanModelList.get(position).getStatusPengaduan().equals("belum_ditanggapi")){
+
+        }else if (pengaduanModelList.get(position).getStatusPengaduan().equals("belum_ditanggapi")){
         holder.tvStatusPengaduan.setText("Belum ditanggapi");
+            holder.vPengaduan.setBackgroundColor(context.getResources().getColor(R.color.gray));
+            holder.cvTanggapanStatus.setCardBackgroundColor(context.getResources().getColor(R.color.gray));
+            holder.icStatus.setImageDrawable(context.getDrawable(R.drawable.close));
+
+        }else if (pengaduanModelList.get(position).getStatusPengaduan().equals("tidak_valid")){
+        holder.tvStatusPengaduan.setText("Tidak valid");
+        holder.vPengaduan.setBackgroundColor(context.getResources().getColor(R.color.gray));
+            holder.cvTanggapanStatus.setCardBackgroundColor(context.getResources().getColor(R.color.gray));
+            holder.icStatus.setImageDrawable(context.getDrawable(R.drawable.close));
+
 
 
     }
@@ -172,18 +194,24 @@ public class MyPengaduanAdapter extends RecyclerView.Adapter<MyPengaduanAdapter.
 
         ImageView imgPengaduan;
         TextView tvStatusPengaduan, tvKelurahan, tvIsiLaporan;
-        RelativeLayout containerStatus;
+
         CardView cvPengaduanItem;
+        View vPengaduan;
+        ImageView icStatus;
+        CardView cvTanggapanStatus;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imgPengaduan = itemView.findViewById(R.id.imgPengaduan);
-            tvStatusPengaduan = itemView.findViewById(R.id.txtStatus);
+
             tvKelurahan = itemView.findViewById(R.id.txtKelurahan);
             tvIsiLaporan = itemView.findViewById(R.id.txtisiLaporan);
-            containerStatus = itemView.findViewById(R.id.containerStatusPengaduan);
             cvPengaduanItem = itemView.findViewById(R.id.cvPengaduanItem);
+            vPengaduan = itemView.findViewById(R.id.vPengaduan);
+            icStatus = itemView.findViewById(R.id.icStatus);
+            cvTanggapanStatus = itemView.findViewById(R.id.cvStatusTanggapan);
+            tvStatusPengaduan = itemView.findViewById(R.id.tvStatusPengaduan);
 
 
         }

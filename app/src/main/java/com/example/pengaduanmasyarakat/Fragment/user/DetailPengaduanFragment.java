@@ -130,6 +130,13 @@ public class DetailPengaduanFragment extends Fragment {
         fullScreenImage(ivFoto2, foto2);
         fullScreenImage(ivFoto3, foto3);
 
+        // set disable edittext
+        etIsiLaporan.setEnabled(false);
+        etJenis.setEnabled(false);
+        etKelurahan.setEnabled(false);
+        etTanggal.setEnabled(false);
+
+
         // set tanggapan
         TanggapanInterface ti = DataApi.getClient().create(TanggapanInterface.class);
         ti.getTanggapanById(idPengaduan).enqueue(new Callback<List<TanggapanModel>>() {

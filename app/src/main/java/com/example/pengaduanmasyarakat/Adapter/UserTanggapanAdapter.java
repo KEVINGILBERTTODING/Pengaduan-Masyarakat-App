@@ -60,6 +60,46 @@ public class UserTanggapanAdapter extends RecyclerView.Adapter<UserTanggapanAdap
                 .thumbnail(0.5f)
                 .into(holder.ivTanggapan);
 
+        if (tanggapanModelList.get(position).getStatusTanggapan().equals("proses")) {
+            holder.cvTanggapanStatus.setCardBackgroundColor(context.getResources().getColor(R.color.main));
+            holder.tvStatusPengaduan.setTextColor(context.getResources().getColor(R.color.white));
+            holder.vTanggapan.setBackgroundColor(context.getResources().getColor(R.color.main));
+            holder.icStatus.setImageDrawable(context.getDrawable(R.drawable.process));
+        } else  if (tanggapanModelList.get(position).getStatusTanggapan().equals("valid")) {
+
+            holder.vTanggapan.setBackgroundColor(context.getResources().getColor(R.color.green));
+
+            holder.tvStatusPengaduan.setTextColor(context.getResources().getColor(R.color.white));
+            holder.cvTanggapanStatus.setCardBackgroundColor(context.getResources().getColor(R.color.green));
+
+            holder.icStatus.setImageDrawable(context.getDrawable(R.drawable.check));
+        } else  if (tanggapanModelList.get(position).getStatusTanggapan().equals("pengerjaan")) {
+            holder.cvTanggapanStatus.setCardBackgroundColor(context.getResources().getColor(R.color.orange));
+            holder.tvStatusPengaduan.setTextColor(context.getResources().getColor(R.color.white));
+            holder.vTanggapan.setBackgroundColor(context.getResources().getColor(R.color.orange));
+
+            holder.icStatus.setImageDrawable(context.getDrawable(R.drawable.hammer));
+        } else  if (tanggapanModelList.get(position).getStatusTanggapan().equals("selesai")) {
+            holder.cvTanggapanStatus.setCardBackgroundColor(context.getResources().getColor(R.color.blue));
+            holder.tvStatusPengaduan.setTextColor(context.getResources().getColor(R.color.white));
+            holder.icStatus.setImageDrawable(context.getDrawable(R.drawable.baseline_calendar_month_24));
+            holder.vTanggapan.setBackgroundColor(context.getResources().getColor(R.color.blue));
+
+        } else  if (tanggapanModelList.get(position).getStatusTanggapan().equals("tidak_valid")) {
+            holder.cvTanggapanStatus.setCardBackgroundColor(context.getResources().getColor(R.color.gray));
+            holder.tvStatusPengaduan.setTextColor(context.getResources().getColor(R.color.black));
+            holder.icStatus.setImageDrawable(context.getDrawable(R.drawable.close));
+            holder.vTanggapan.setBackgroundColor(context.getResources().getColor(R.color.gray));
+
+        }else  if (tanggapanModelList.get(position).getStatusTanggapan().equals("belum_ditanggapi")) {
+            holder.cvTanggapanStatus.setCardBackgroundColor(context.getResources().getColor(R.color.gray));
+            holder.tvStatusPengaduan.setTextColor(context.getResources().getColor(R.color.black));
+            holder.vTanggapan.setBackgroundColor(context.getResources().getColor(R.color.gray));
+
+            holder.icStatus.setImageDrawable(context.getDrawable(R.drawable.close));
+
+        }
+
     }
 
     @Override
@@ -71,6 +111,7 @@ public class UserTanggapanAdapter extends RecyclerView.Adapter<UserTanggapanAdap
         TextView tvUsername, tvStatusPengaduan, tvTglPengaduan, tvIsiTgpn;
         ImageView ivTanggapan, icStatus;
         CardView cvTanggapanStatus;
+        View vTanggapan;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -81,6 +122,8 @@ public class UserTanggapanAdapter extends RecyclerView.Adapter<UserTanggapanAdap
             tvIsiTgpn =itemView.findViewById(R.id.txtisiTanggapan);
             ivTanggapan = itemView.findViewById(R.id.imgTanggapan);
             icStatus = itemView.findViewById(R.id.icStatus);
+            cvTanggapanStatus = itemView.findViewById(R.id.cvStatusTanggapan);
+            vTanggapan = itemView.findViewById(R.id.viewTanggapan);
 
             itemView.setOnClickListener(this);
         }

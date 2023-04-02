@@ -52,8 +52,7 @@
                     android:id="@+id/imgTanggapan"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_50sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@color/black"/>
+                    android:layout_marginTop="@dimen/_10sdp"/>
 
 
                 <TextView

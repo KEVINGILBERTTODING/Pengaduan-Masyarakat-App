@@ -13,8 +13,9 @@
 
 
         <View
+            android:id="@+id/viewTanggapan"
             android:layout_width="@dimen/_5sdp"
-            android:background="@color/main"
+            android:background="@color/orange"
             android:layout_height="@dimen/_110sdp"/>
 
 
