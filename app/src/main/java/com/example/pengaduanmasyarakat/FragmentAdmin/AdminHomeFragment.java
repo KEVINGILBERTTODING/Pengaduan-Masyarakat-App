@@ -91,6 +91,7 @@ public class AdminHomeFragment extends Fragment {
                 dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                 final Button btnUser, btnMasyarakat, btnKecamatan, btnKelurahan;
                 btnUser = dialog.findViewById(R.id.btnUser);
+                btnMasyarakat = dialog.findViewById(R.id.btnMasyarakat);
                 dialog.show();
 
                 // btnUser click
@@ -100,6 +101,17 @@ public class AdminHomeFragment extends Fragment {
                         manajemenData(new ListUserFragment());
                         dialog.dismiss();
                     }
+                });
+
+                btnMasyarakat.setOnClickListener(View ->{
+
+                    getFragmentManager().beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.frame_admin_container, new ListMasyarakatFragment())
+                            .commit();
+
+                    dialog.dismiss();
+
                 });
             }
         });

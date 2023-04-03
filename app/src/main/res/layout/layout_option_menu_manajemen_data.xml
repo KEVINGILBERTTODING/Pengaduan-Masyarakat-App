@@ -60,10 +60,10 @@
             android:layout_height="wrap_content"
             android:text="Daftar Kelurahan"
             app:cornerRadius="@dimen/_5sdp"
-            app:backgroundTint="@color/main"
+            app:backgroundTint="@color/orange"
             android:id="@+id/btnKelurahan"
             android:layout_marginTop="@dimen/_5sdp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textAllCaps="false"/>
   <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
