@@ -38,4 +38,13 @@ public interface UserInterface extends Serializable {
     Call<List<AdminUserModel>>getUserByUserId(
             @Query("id_user") String idUser
     );
+
+    @FormUrlEncoded
+    @POST("admin/manajemendata/insertuser")
+    Call<AdminUserModel>inserUser(
+            @Field("nama") String nama,
+            @Field ("no_telepon") String noTelepn,
+            @Field("username") String username,
+            @Field("password") String password
+    );
 }

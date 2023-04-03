@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/main"
-    tools:context=".FragmentAdmin.UpadateUserFragment">
+    tools:context=".FragmentAdmin.InsertUserBaruFragment">
 
     <TextView
         android:id="@+id/title1"
@@ -16,7 +16,7 @@
         android:layout_marginEnd="@dimen/_15sdp"
         android:layout_marginBottom="@dimen/_15sdp"
         android:fontFamily="@font/popmed"
-        android:text="Tambah user"
+        android:text="Ubah user"
         android:textColor="@color/black"
         android:textSize="@dimen/_13sdp" />
 
@@ -73,6 +73,41 @@
 
                 <TextView
                     android:layout_width="match_parent"
+                    android:text="Password"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/popmed"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/popmed"
+                    android:textSize="@dimen/_10sdp"
+                    android:inputType="textPassword"
+                    android:layout_height="wrap_content"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="Password Validasi"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/popmed"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:id="@+id/etPasswordValidate"
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/popmed"
+                    android:textSize="@dimen/_10sdp"
+                    android:inputType="textPassword"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:text="No. Telp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:fontFamily="@font/popmed"
@@ -88,27 +123,10 @@
                     android:layout_height="wrap_content"/>
 
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:text="Jabatan"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:fontFamily="@font/popmed"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_11sdp"
-                    android:layout_height="wrap_content"/>
-
-                <EditText
-                    android:id="@+id/etJabatan"
-                    android:layout_width="match_parent"
-                    android:fontFamily="@font/popmed"
-                    android:textSize="@dimen/_10sdp"
-                    android:editable="false"
-                    android:layout_height="wrap_content"/>
-
 
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnUpdate"
+                    android:id="@+id/btnInsert"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Simpan"
@@ -124,7 +142,6 @@
 
 
     </LinearLayout>
-
 
 
 </RelativeLayout>

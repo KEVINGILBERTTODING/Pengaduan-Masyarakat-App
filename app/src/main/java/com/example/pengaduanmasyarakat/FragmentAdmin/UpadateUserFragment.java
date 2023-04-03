@@ -127,11 +127,6 @@ public class UpadateUserFragment extends Fragment {
 
 
 
-
-
-
-
-
         return view;
 
 

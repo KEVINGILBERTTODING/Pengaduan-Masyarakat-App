@@ -20,6 +20,7 @@ import com.example.pengaduanmasyarakat.Model.AdminUserModel;
 import com.example.pengaduanmasyarakat.R;
 import com.example.pengaduanmasyarakat.Util.DataApi;
 import com.example.pengaduanmasyarakat.Util.interfaces.UserInterface;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ import retrofit2.Response;
 public class ListUserFragment extends Fragment {
 
     RecyclerView rvListUser;
+    FloatingActionButton fabInsert;
 
     List<AdminUserModel> adminUserModelList;
     LinearLayoutManager linearLayoutManager;
@@ -54,6 +56,7 @@ public class ListUserFragment extends Fragment {
 
         rvListUser = view.findViewById(R.id.rvListUser);
         searchbar = view.findViewById(R.id.searchBar);
+        fabInsert = view.findViewById(R.id.fabInsertUser);
         pd = new ProgressDialog(getContext());
         pd.setMessage("Memuat data..");
         pd.show();
@@ -110,6 +113,15 @@ public class ListUserFragment extends Fragment {
                 return false;
             }
         });
+
+        fabInsert.setOnClickListener(View->{
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.frame_admin_container, new InsertUserBaruFragment())
+                    .addToBackStack(null)
+                    .commit();
+        });
+
+
 
 
         return view;

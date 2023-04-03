@@ -51,6 +51,17 @@
     </LinearLayout>
 
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabInsertUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/main"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"/>
+
 
 
 </RelativeLayout>
