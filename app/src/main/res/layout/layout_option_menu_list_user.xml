@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardCornerRadius="@dimen/_5sdp"
+        android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Opsi menu"
+            android:fontFamily="@font/popmed"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@color/gray"/>
+
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:cornerRadius="@dimen/_5sdp"
+            app:backgroundTint="@color/orange"
+            android:id="@+id/btnEditUser"
+            android:textAllCaps="false"/>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hapus"
+            app:cornerRadius="@dimen/_5sdp"
+            app:backgroundTint="@color/red"
+            android:id="@+id/btnDeleteUser"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"/>
+
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

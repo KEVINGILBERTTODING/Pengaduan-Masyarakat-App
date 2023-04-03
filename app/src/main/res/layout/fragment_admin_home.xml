@@ -90,6 +90,62 @@
                     app:cardCornerRadius="@dimen/_10sdp"
                     app:cardUseCompatPadding="true"
                     app:contentPadding="@dimen/_10sdp"
+                    android:id="@+id/cvMnuMnjmData"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="@dimen/_40sdp"
+                            android:id="@+id/relativeMenu0"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            android:elevation="@dimen/_5sdp"
+                            app:contentPadding="@dimen/_10sdp"
+                            app:cardBackgroundColor="@color/purple"
+                            android:layout_centerVertical="true"
+                            android:layout_height="wrap_content">
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center_horizontal"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_20sdp"
+                                    android:layout_height="@dimen/_20sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/ic_manajemen_data" />
+                            </RelativeLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_toRightOf="@id/relativeMenu0">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:fontFamily="@font/popmed"
+                                android:text="Manajemen Data"
+                                android:textSize="@dimen/_10sdp" />
+
+
+                        </LinearLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="@dimen/_10sdp"
                     android:id="@+id/cvMnuBlmDitgp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_height="wrap_content">

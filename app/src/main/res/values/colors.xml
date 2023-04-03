@@ -13,4 +13,6 @@
     <color name="blue">#208ADF</color>
     <color name="green">#4CAF50</color>
     <color name="orange">#FF9800</color>
+    <color name="purple">#673AB7</color>
+    <color name="red">#ED0030</color>
 </resources>
