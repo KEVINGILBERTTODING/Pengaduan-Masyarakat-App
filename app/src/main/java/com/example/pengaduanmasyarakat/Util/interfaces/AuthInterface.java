@@ -83,6 +83,32 @@ public interface AuthInterface
     );
 
 
+    //    Ubah profile
+    @FormUrlEncoded
+    @POST("auth/updateProfileAdmin")
+    Call<AdminUserModel> updateAdminProfile(
+            @Field("nama") String namaLengkap,
+            @Field("no_telp") String noTelp,
+            @Field("id_user") String idUser
+    );
+
+    @FormUrlEncoded
+    @POST("auth/updatePasswordAdmin")
+    Call<AdminUserModel>updateAdminPasswod(
+            @Field("password_old") String passwordOld,
+            @Field("password_new") String passwordNew,
+            @Field("id_user") String idUser
+    );
+
+    // get data user
+    @GET("admin/user/getUserById")
+    Call<List<AdminUserModel>> getAdminById(
+            @Query("user_id") String userId
+    );
+
+
+
+
 
 
 

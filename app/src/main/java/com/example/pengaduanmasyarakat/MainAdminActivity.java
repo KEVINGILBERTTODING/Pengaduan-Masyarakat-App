@@ -15,6 +15,7 @@ import com.example.pengaduanmasyarakat.Fragment.user.HomeFragment;
 import com.example.pengaduanmasyarakat.Fragment.user.ProfileUserFragment;
 import com.example.pengaduanmasyarakat.Fragment.user.allPengaduanFragment;
 import com.example.pengaduanmasyarakat.FragmentAdmin.AdminHomeFragment;
+import com.example.pengaduanmasyarakat.FragmentAdmin.ProfileAdminFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainAdminActivity extends AppCompatActivity {
@@ -38,10 +39,10 @@ public class MainAdminActivity extends AppCompatActivity {
                   replace(new allPengaduanFragment());
                    return true;
                } else if (item.getItemId() == R.id.menuHome) {
-                   replace(new HomeFragment());
+                   replace(new AdminHomeFragment());
                    return true;
                } else if (item.getItemId() == R.id.menuProfile) {
-                   replace(new ProfileUserFragment());
+                   replace(new ProfileAdminFragment());
                    return true;
                }
 
@@ -62,7 +63,7 @@ public class MainAdminActivity extends AppCompatActivity {
 
     private void replace(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_container,fragment);
+        transaction.replace(R.id.frame_admin_container,fragment);
         transaction.commit();
     }
 
