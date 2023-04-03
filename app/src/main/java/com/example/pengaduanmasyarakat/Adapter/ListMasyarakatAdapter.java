@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pengaduanmasyarakat.FragmentAdmin.EditMasyarakatFragment;
 import com.example.pengaduanmasyarakat.Model.UserModel;
 import com.example.pengaduanmasyarakat.R;
 import com.example.pengaduanmasyarakat.Util.DataApi;
@@ -121,6 +125,27 @@ public class ListMasyarakatAdapter extends RecyclerView.Adapter<ListMasyarakatAd
                 });
 
                 md.show();
+            });
+
+            btnEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(android.view.View v) {
+                    Fragment f = new EditMasyarakatFragment();
+                    Bundle b = new Bundle();
+
+                    b.putString("username", userModelList.get(position).getUserName());
+                    b.putString("nama", userModelList.get(position).getNamaLengkap());
+                    b.putString("no_telepon", userModelList.get(position).getNoTelp());
+                    b.putString("alamat", userModelList.get(position).getAlamat());
+                    b.putString("nik", userModelList.get(position).getNik());
+                    b.putString("id_masyarakat", userModelList.get(position).getIdMasyarakat());
+                    f.setArguments(b);
+                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.frame_admin_container, f)
+                            .addToBackStack(null)
+                            .commit();
+                    dialog.dismiss();
+                }
             });
 
         });

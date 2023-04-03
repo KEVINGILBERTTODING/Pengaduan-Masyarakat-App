@@ -31,4 +31,17 @@ public interface MasyarakatInterface {
             @Field("nik") String nik,
             @Field("alamat") String alamat
     );
+
+    @FormUrlEncoded
+    @POST("admin/manajemendata/updateMasyarakat")
+    Call<UserModel>updateMasyarakat(
+            @Field("id_masyarakat") String idMasyarakat,
+            @Field("nama") String nama,
+            @Field("no_telepon") String noTelepon,
+            @Field("nik") String nik,
+            @Field("alamat") String alamat
+    );
+
+
+
 }

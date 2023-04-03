@@ -17,7 +17,7 @@ public class UserModel implements Serializable {
     String noTelp;
     @SerializedName("alamat")
     String alamat;
-    @SerializedName("nik")
+    @SerializedName("NIK")
     String nik;
     @SerializedName("status")
     String status;
