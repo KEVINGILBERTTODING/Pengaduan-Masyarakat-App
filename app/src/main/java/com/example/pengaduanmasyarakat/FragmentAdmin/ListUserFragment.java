@@ -1,5 +1,6 @@
 package com.example.pengaduanmasyarakat.FragmentAdmin;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ public class ListUserFragment extends Fragment {
     SharedPreferences sharedPreferences;
     SearchView searchbar;
 
+    ProgressDialog pd;
 
 
     @Override
@@ -52,14 +54,16 @@ public class ListUserFragment extends Fragment {
 
         rvListUser = view.findViewById(R.id.rvListUser);
         searchbar = view.findViewById(R.id.searchBar);
+        pd = new ProgressDialog(getContext());
+        pd.setMessage("Memuat data..");
+        pd.show();
 
-        Toasty.success(getContext(), sharedPreferences.getString("user_id", null), Toasty.LENGTH_SHORT).show();
 
 
         userInterface = DataApi.getClient().create(UserInterface.class);
 
         // get data user
-        userInterface.getAllUser(sharedPreferences.getString("user_id", null))
+        userInterface.getAllUser(sharedPreferences.getString("id_user", null))
                 .enqueue(new Callback<List<AdminUserModel>>() {
                     @Override
                     public void onResponse(Call<List<AdminUserModel>> call, Response<List<AdminUserModel>> response) {
@@ -70,10 +74,15 @@ public class ListUserFragment extends Fragment {
                             rvListUser.setLayoutManager(linearLayoutManager);
                             rvListUser.setAdapter(daftarUserAdapter);
                             rvListUser.setHasFixedSize(true);
+                            pd.dismiss();
+                            daftarUserAdapter.notifyDataSetChanged();
+
+
 
 
                         }else {
                             Toasty.error(getContext(), "gagal memuat data..", Toasty.LENGTH_SHORT).show();
+                            pd.dismiss();
                         }
 
 
@@ -83,6 +92,7 @@ public class ListUserFragment extends Fragment {
                     public void onFailure(Call<List<AdminUserModel>> call, Throwable t) {
                         Toasty.error(getContext(), "Periksa koneksi anda", Toasty.LENGTH_SHORT).show();
                         Log.e("gagal", "ini errornya", t);
+                        pd.dismiss();
 
                     }
                 });

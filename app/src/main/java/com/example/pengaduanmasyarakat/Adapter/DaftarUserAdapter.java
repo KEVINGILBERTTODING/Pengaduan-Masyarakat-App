@@ -1,19 +1,25 @@
 package com.example.pengaduanmasyarakat.Adapter;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pengaduanmasyarakat.FragmentAdmin.UpadateUserFragment;
 import com.example.pengaduanmasyarakat.Model.AdminUserModel;
 import com.example.pengaduanmasyarakat.R;
 import com.example.pengaduanmasyarakat.Util.DataApi;
@@ -126,6 +132,24 @@ public class DaftarUserAdapter extends RecyclerView.Adapter<DaftarUserAdapter.Vi
 
                     }
                 });
+
+                btnEdit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Fragment fragment = new UpadateUserFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("id_user", adminUserModelList.get(position).getIdUser());
+                        fragment.setArguments(bundle);
+                        ((FragmentActivity) context).getSupportFragmentManager()
+                                .beginTransaction().replace(R.id.frame_admin_container, fragment)
+                                .addToBackStack(null)
+                                .commit();
+                        dialog.dismiss();
+
+                    }
+                });
+
+
             }
         });
 

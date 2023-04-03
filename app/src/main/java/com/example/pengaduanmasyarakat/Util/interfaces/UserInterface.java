@@ -25,4 +25,17 @@ public interface UserInterface extends Serializable {
     Call<AdminUserModel>deleteUser(
             @Field("id_user") String idUser
     );
+
+    @FormUrlEncoded
+    @POST("admin/manajemendata/ubahProfileUser")
+    Call<AdminUserModel>updateUser(
+            @Field("id_user") String idUser,
+            @Field("nama") String nama,
+            @Field("no_telp") String noTelp
+    );
+
+    @GET("admin/manajemendata/getUserByUserId")
+    Call<List<AdminUserModel>>getUserByUserId(
+            @Query("id_user") String idUser
+    );
 }
