@@ -97,6 +97,14 @@ public class ListMasyarakatFragment extends Fragment {
             }
         });
 
+        fabInsertMasyarakat.setOnClickListener(View ->{
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.frame_admin_container, new InsertDataMasyarakatFragment())
+                    .addToBackStack(null)
+                    .commit();
+
+        });
+
 
 
 

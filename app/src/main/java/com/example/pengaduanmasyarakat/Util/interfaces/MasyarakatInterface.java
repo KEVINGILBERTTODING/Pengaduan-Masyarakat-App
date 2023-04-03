@@ -20,4 +20,15 @@ public interface MasyarakatInterface {
     Call<UserModel>deleteMasyarakat(
             @Field("id_masyarakat") String idMasyarakat
     );
+
+    @FormUrlEncoded
+    @POST("admin/manajemendata/insertMasyarakat")
+    Call<UserModel>insertMasyarakat(
+            @Field("username") String username,
+            @Field("nama") String nama,
+            @Field("password") String password,
+            @Field("no_telepon") String noTelepon,
+            @Field("nik") String nik,
+            @Field("alamat") String alamat
+    );
 }
