@@ -1,7 +1,5 @@
 package com.example.pengaduanmasyarakat;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.pengaduanmasyarakat.Model.AdminUserModel;
 import com.example.pengaduanmasyarakat.Model.UserModel;
 import com.example.pengaduanmasyarakat.Util.DataApi;
 import com.example.pengaduanmasyarakat.Util.interfaces.AuthInterface;
@@ -19,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginAdminActivity extends AppCompatActivity {
     EditText etUsername, etPassword;
 
     // membuat object sharedpreference
@@ -28,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_admin_login);
 
         sharedPreferences = getSharedPreferences("user_data", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -37,37 +38,32 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.et_password);
 
         if (sharedPreferences.getBoolean("login", false)){
-            if (sharedPreferences.getBoolean("login_user", false)) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
-            }else {
-                startActivity(new Intent(getApplicationContext(), MainAdminActivity.class));
-            }
-
+            startActivity(new Intent(getApplicationContext(), MainAdminActivity.class));
+            finish();
         }
     }
 
     public void btnLogin(View view) {
 
         AuthInterface authInterface = DataApi.getClient().create(AuthInterface.class);
-        authInterface.login(etUsername.getText().toString(), etPassword.getText().toString()).enqueue(new Callback<UserModel>() {
+        authInterface.loginAdmin(etUsername.getText().toString(), etPassword.getText().toString()).enqueue(new Callback<AdminUserModel>() {
             @Override
-            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-                UserModel userModel = response.body();
+            public void onResponse(Call<AdminUserModel> call, Response<AdminUserModel> response) {
+                AdminUserModel userModel = response.body();
                 if (userModel.getStatus().equals("success")){
                     editor.putBoolean("login", true);
-                    editor.putBoolean("login_user", true);
-                    editor.putString("user_id", userModel.getIdMasyarakat());
+                    editor.putBoolean("login_admin", true);
+                    editor.putString("user_id", userModel.getIdUser());
                     editor.putString("nama_lengkap", userModel.getNamaLengkap());
-
                     editor.putString("username", userModel.getUserName());
+                    editor.putString("jabatan", userModel.getJabatan());
                     editor.commit();
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(new Intent(LoginAdminActivity.this, MainAdminActivity.class));
                     finish();
-                    Toasty.success(LoginActivity.this, userModel.getMessage(), Toasty.LENGTH_SHORT).show();
+                    Toasty.success(LoginAdminActivity.this, userModel.getMessage(), Toasty.LENGTH_SHORT).show();
 
                 }else {
-                    Toasty.error(LoginActivity.this, userModel.getMessage(), Toasty.LENGTH_SHORT).show();
+                    Toasty.error(LoginAdminActivity.this, userModel.getMessage(), Toasty.LENGTH_SHORT).show();
 
 
                 }
@@ -75,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<UserModel> call, Throwable t) {
+            public void onFailure(Call<AdminUserModel> call, Throwable t) {
                 Log.e("Login Activity", "ini errornya  : ", t );
 
             }
@@ -85,16 +81,5 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void btnRegister(View view) {
-        startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-    }
 
-    public void btnAdminLogin(View view) {
-        startActivity(new Intent(LoginActivity.this, SplashScreen.class));
-    }
-
-    public void btnLoginAdmin(View view) {
-        Intent intent = new Intent(LoginActivity.this, LoginAdminActivity.class);
-        startActivity(intent);
-    }
 }

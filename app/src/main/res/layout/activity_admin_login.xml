@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/main"
 
-    tools:context=".LoginActivity">
+    tools:context=".LoginAdminActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
+            android:text="Login Admin"
             android:fontFamily="@font/popsem"
             android:textColor="@color/black"
             android:textSize="@dimen/_15ssp"/>
@@ -108,50 +108,6 @@
                     android:onClick="btnLogin"
                     android:elevation="0dp"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:textAllCaps="false"
-                    app:cornerRadius="@dimen/_15sdp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_10sdp"
-                        android:text="Belum memiliki akun?"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_10sdp"
-                        android:onClick="btnRegister"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:textColor="@color/main"
-                        android:text="Register?"/>
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="@font/popmed"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:textSize="@dimen/_10sdp"
-                    android:layout_marginLeft="@dimen/_5sdp"
-                    android:text="Atau"/>
-
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Login sebagai admin"
-                    android:onClick="btnLoginAdmin"
-                    allcaps="false"
-                    android:elevation="0dp"
-                    android:layout_marginTop="@dimen/_5sdp"
                     android:textAllCaps="false"
                     app:cornerRadius="@dimen/_15sdp"/>
 

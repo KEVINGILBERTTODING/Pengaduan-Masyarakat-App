@@ -1,5 +1,6 @@
 package com.example.pengaduanmasyarakat.Util.interfaces;
 
+import com.example.pengaduanmasyarakat.Model.AdminUserModel;
 import com.example.pengaduanmasyarakat.Model.UserModel;
 
 import java.util.List;
@@ -72,6 +73,15 @@ public interface AuthInterface
             @Field("alamat") String alamat,
             @Field("saran") String saran
     );
+
+    // login
+    @FormUrlEncoded
+    @POST("auth/loginadmin")
+    Call<AdminUserModel>loginAdmin(
+            @Field("username") String username,
+            @Field("password") String password
+    );
+
 
 
 
