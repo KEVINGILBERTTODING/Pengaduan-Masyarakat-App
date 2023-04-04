@@ -58,11 +58,9 @@ public class AllKecamatanAdapter extends RecyclerView.Adapter<AllKecamatanAdapte
                 btnDelete = dialog.findViewById(R.id.btnDeleteUser);
                 dialog.show();
 
-                ProgressDialog pd = new ProgressDialog(context);
-                pd.setTitle("Menghapus data...");
-                pd.show();
 
                 btnDelete.setOnClickListener(new View.OnClickListener() {
+
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
@@ -72,6 +70,12 @@ public class AllKecamatanAdapter extends RecyclerView.Adapter<AllKecamatanAdapte
                         md.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+
+                                ProgressDialog pd = new ProgressDialog(context);
+                                pd.setTitle("Menghapus data...");
+                                pd.show();
+                                pd.setCanceledOnTouchOutside(false);
+
                                 KecamatanInterface ki = DataApi.getClient().create(KecamatanInterface.class);
                                 ki.deleteKecamatan(kecamatanModelList.get(position).getIdKecamtan())
                                         .enqueue(new Callback<KecamatanModel>() {
@@ -85,6 +89,7 @@ public class AllKecamatanAdapter extends RecyclerView.Adapter<AllKecamatanAdapte
                                                         notifyItemRangeChanged(position, kecamatanModelList.size());
                                                         notifyItemRemoved(position);
                                                         kecamatanModelList.remove(position);
+                                                        Toasty.success(context, "Berhasil menghapus data", Toasty.LENGTH_SHORT).show();
 
 
                                                     }else {
@@ -110,6 +115,8 @@ public class AllKecamatanAdapter extends RecyclerView.Adapter<AllKecamatanAdapte
 
                             }
                         });
+
+                        md.show();
 
                     }
                 });
