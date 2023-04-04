@@ -21,6 +21,7 @@ import com.example.pengaduanmasyarakat.Fragment.user.MyPengaduanFragment;
 import com.example.pengaduanmasyarakat.Model.PengaduanModel;
 import com.example.pengaduanmasyarakat.R;
 import com.example.pengaduanmasyarakat.Util.DataApi;
+import com.example.pengaduanmasyarakat.Util.interfaces.AdminPengaduanInterface;
 import com.example.pengaduanmasyarakat.Util.interfaces.PengaduanInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -69,17 +70,17 @@ public class AdminHomeFragment extends Fragment {
         tvUsername.setText("Halo "+ sharedPreferences.getString("username", "null"));
 
         // settext total pengaduan selesai
-        getMyPengaduan(sharedPreferences.getString("user_id", null), "selesai", tvTotalSelesai);
+        displayTotalPengaduan( "selesai", tvTotalSelesai);
         // settext total pengaduan belum tanggapi
-        getMyPengaduan(sharedPreferences.getString("user_id", null), "belum_ditanggapi", tvTotalBlmTanggap);
+        displayTotalPengaduan( "belum_ditanggapi", tvTotalBlmTanggap);
         // settext total pengaduan proses
-        getMyPengaduan(sharedPreferences.getString("user_id", null), "proses", tvTotalProses);
+        displayTotalPengaduan( "proses", tvTotalProses);
         // settext total pengaduan valid
-        getMyPengaduan(sharedPreferences.getString("user_id", null), "valid", tvTotalValid);
+        displayTotalPengaduan( "valid", tvTotalValid);
         // settext total pengaduan pengerjaan
-        getMyPengaduan(sharedPreferences.getString("user_id", null), "pengerjaan", tvTotalPengerjaan);
+        displayTotalPengaduan( "pengerjaan", tvTotalPengerjaan);
         // settext total pengaduan pengerjaan
-        getMyPengaduan(sharedPreferences.getString("user_id", null), "tidak_valid", tvTotalTidakValid);
+        displayTotalPengaduan( "tidak_valid", tvTotalTidakValid);
 
 
 
@@ -140,7 +141,7 @@ public class AdminHomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                showMyPengaduan("Pengaduan diProses", "proses", new MyPengaduanFragment());
+                showMyPengaduan("Pengaduan diProses", "proses", new PengaduanFragment());
 
 
 
@@ -151,33 +152,33 @@ public class AdminHomeFragment extends Fragment {
         cvMenuSelesai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showMyPengaduan("Pengaduan Selesai", "selesai", new MyPengaduanFragment());
+                showMyPengaduan("Pengaduan Selesai", "selesai", new PengaduanFragment());
             }
         });
 
         cvMenuValid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showMyPengaduan("Pengaduan Valid", "valid", new MyPengaduanFragment());
+                showMyPengaduan("Pengaduan Valid", "valid", new PengaduanFragment());
             }
         });
 
         cvMenuPengerjaan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showMyPengaduan("Pengaduan Pengerjaan", "pengerjaan", new MyPengaduanFragment());
+                showMyPengaduan("Pengaduan Pengerjaan", "pengerjaan", new PengaduanFragment());
             }
         });
         cvMenuBlmDitgp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showMyPengaduan("Pengaduan Belum ditanggapi", "belum_ditanggapi", new MyPengaduanFragment());
+                showMyPengaduan("Pengaduan Belum ditanggapi", "belum_ditanggapi", new PengaduanFragment());
             }
         });
         cvMnuTdkValid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showMyPengaduan("Pengaduan Tidak Valid", "tidak_valid", new MyPengaduanFragment());
+                showMyPengaduan("Pengaduan Tidak Valid", "tidak_valid", new PengaduanFragment());
             }
         });
 
@@ -201,30 +202,25 @@ public class AdminHomeFragment extends Fragment {
     }
 
 
-    public void getMyPengaduan(String userId, String jenis, TextView tvTotal){
-        pengaduanInterface = DataApi.getClient().create(PengaduanInterface.class);
-        pengaduanInterface.getMyPengaduan(userId, jenis).enqueue(new Callback<List<PengaduanModel>>() {
+    private void displayTotalPengaduan(String status, TextView tvTotal) {
+        AdminPengaduanInterface aip = DataApi.getClient().create(AdminPengaduanInterface.class);
+        aip.getAllPengaduanByStatus(status).enqueue(new Callback<List<PengaduanModel>>() {
             @Override
             public void onResponse(Call<List<PengaduanModel>> call, Response<List<PengaduanModel>> response) {
-                pengaduanModelList = response.body();
-                if (pengaduanModelList != null) {
-                    tvTotal.setText(String.valueOf(pengaduanModelList.size()));
+                if (response.isSuccessful() && response.body().size() > 0) {
+                    tvTotal.setText(String.valueOf(response.body().size()));
                 }else {
-
-
+                    tvTotal.setText("0");
                 }
-
             }
 
             @Override
             public void onFailure(Call<List<PengaduanModel>> call, Throwable t) {
-//                Toasty.error(getContext(), "Periksa koneksi anda",Toasty.LENGTH_SHORT).show();
-                Log.e("adas", "Error ni: ", t);
-                tvTotal.setText("0");
+                tvTotal.setText("Terjadi kesalahan");
+
 
             }
         });
-
     }
 
     private void showMyPengaduan(String judul, String jenis, Fragment fragment) {
@@ -234,7 +230,7 @@ public class AdminHomeFragment extends Fragment {
         bundle.putString("judul", judul);
         fragment.setArguments(bundle);
         getFragmentManager().beginTransaction()
-                .replace(R.id.frame_container, fragment)
+                .replace(R.id.frame_admin_container, fragment)
                 .addToBackStack(null)
                 .commit();
     }
