@@ -10,10 +10,16 @@ public class KecamatanModel implements Serializable {
     String idKecamtan;
     @SerializedName("kecamatan")
     String kecamatan;
+    @SerializedName("status")
+    String status;
+    @SerializedName("message")
+    String message;
 
-    public KecamatanModel(String idKecamtan, String kecamatan) {
+    public KecamatanModel(String idKecamtan, String kecamatan, String status, String message) {
         this.idKecamtan = idKecamtan;
         this.kecamatan = kecamatan;
+        this.status = status;
+        this.message = message;
     }
 
     public String getIdKecamtan() {
@@ -30,5 +36,21 @@ public class KecamatanModel implements Serializable {
 
     public void setKecamatan(String kecamatan) {
         this.kecamatan = kecamatan;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

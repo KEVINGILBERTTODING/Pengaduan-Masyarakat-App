@@ -23,7 +23,7 @@ import retrofit2.Response;
 
 public class EditMasyarakatFragment extends Fragment {
 
-    EditText etNama, etUsername, etPassword, etPasswordVal, etNoTelp, etAlamat,etNik;
+    EditText etNama, etUsername, etNoTelp, etAlamat,etNik;
     Button btnSimpan;
     UserModel userModel;
 
