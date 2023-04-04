@@ -8,6 +8,8 @@ import java.util.Map;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -33,5 +35,13 @@ public interface TanggapanInterface{
                 @PartMap Map<String, RequestBody>TextData,
                 @Part MultipartBody.Part image
                 );
+
+        @FormUrlEncoded
+        @POST("admin/tanggapan/deleteTanggapan")
+        Call<TanggapanModel>deleteTanggapan(
+                @Field("id_tanggapan") String idTanggapan,
+                @Field("id_pengaduan") String idPengaduan,
+                @Field("status_pengaduan") String statusPengaduan
+        );
 
 }

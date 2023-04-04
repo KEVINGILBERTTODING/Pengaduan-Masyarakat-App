@@ -198,7 +198,6 @@ public class PengaduanAdapter extends RecyclerView.Adapter<PengaduanAdapter.View
                         ((FragmentActivity) context).getSupportFragmentManager()
                                 .beginTransaction()
                                 .replace(R.id.frame_admin_container, fragment)
-                                .addToBackStack(null)
                                 .commit();
                     }
                 });

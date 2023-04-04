@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.pengaduanmasyarakat.Adapter.AdminTanggapanAdapter;
 import com.example.pengaduanmasyarakat.Adapter.UserTanggapanAdapter;
 import com.example.pengaduanmasyarakat.FragmentAdmin.InsertTanggapanFragment;
 import com.example.pengaduanmasyarakat.Model.TanggapanModel;
@@ -147,7 +148,7 @@ public class AdminDetailPengaduanFragment extends Fragment {
                 tanggapanModelList = response.body();
                if (response.isSuccessful()) {
                    if (tanggapanModelList.size() >0) {
-                       UserTanggapanAdapter userTanggapanAdapter = new UserTanggapanAdapter(getContext(), tanggapanModelList);
+                       AdminTanggapanAdapter userTanggapanAdapter = new AdminTanggapanAdapter(getContext(), tanggapanModelList);
                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
                        rvTanggapan.setLayoutManager(linearLayoutManager);
                        rvTanggapan.setAdapter(userTanggapanAdapter);
@@ -184,7 +185,7 @@ public class AdminDetailPengaduanFragment extends Fragment {
                 bundle.putString("jenis", jenis);
                 bundle.putString("status_pengaduan", statusPengaduan);
                 fragment.setArguments(bundle);
-                getFragmentManager().beginTransaction().replace(R.id.frame_admin_container, fragment).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.frame_admin_container, fragment).commit();
 
             }
         });

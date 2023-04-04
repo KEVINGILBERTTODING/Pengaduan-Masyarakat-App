@@ -20,8 +20,10 @@ public class TanggapanModel implements Serializable {
     String idPengaduan;
     @SerializedName("username")
     String username;
+    @SerializedName("status")
+    String status;
 
-    public TanggapanModel(String idTanggapan, String isiTanggapan, String tglTanggapan, String fotoTanggapan, String statusTanggapan, String idPengaduan, String username) {
+    public TanggapanModel(String idTanggapan, String isiTanggapan, String tglTanggapan, String fotoTanggapan, String statusTanggapan, String idPengaduan, String username, String status) {
         this.idTanggapan = idTanggapan;
         this.isiTanggapan = isiTanggapan;
         this.tglTanggapan = tglTanggapan;
@@ -29,6 +31,7 @@ public class TanggapanModel implements Serializable {
         this.statusTanggapan = statusTanggapan;
         this.idPengaduan = idPengaduan;
         this.username = username;
+        this.status = status;
     }
 
 
@@ -86,5 +89,13 @@ public class TanggapanModel implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

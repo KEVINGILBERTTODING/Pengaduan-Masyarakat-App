@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.pengaduanmasyarakat.Fragment.user.FullScreenImageAllFragment;
+import com.example.pengaduanmasyarakat.FragmentAdmin.EditTanggapanFragment;
 import com.example.pengaduanmasyarakat.Model.TanggapanModel;
 import com.example.pengaduanmasyarakat.R;
 
@@ -130,7 +131,20 @@ public class AdminTanggapanAdapter extends RecyclerView.Adapter<AdminTanggapanAd
 
         @Override
         public void onClick(View v) {
-            Dialog dialog = new Dialog(context);
+
+            Dialog dialogOptionMenu = new Dialog(context);
+            dialogOptionMenu.setContentView(R.layout.layout_option_menu_tanggapan);
+            dialogOptionMenu.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            final Button btnDetail, btnEdit;
+            btnDetail = dialogOptionMenu.findViewById(R.id.btnDetail);
+            btnEdit = dialogOptionMenu.findViewById(R.id.btnEdit);
+            dialogOptionMenu.show();
+
+            btnDetail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialogOptionMenu.dismiss();
+                                Dialog dialog = new Dialog(context);
             dialog.setContentView(R.layout.layout_det_tanggapan);
             dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
             final Button btnOk;
@@ -165,7 +179,7 @@ public class AdminTanggapanAdapter extends RecyclerView.Adapter<AdminTanggapanAd
                     bundle.putString("image", tanggapanModelList.get(getAdapterPosition()).getFotoTanggapan());
                     fragment.setArguments(bundle);
                     ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.frame_container, fragment)
+                            .replace(R.id.frame_admin_container, fragment)
                             .addToBackStack(null)
                             .commit();
 
@@ -179,6 +193,26 @@ public class AdminTanggapanAdapter extends RecyclerView.Adapter<AdminTanggapanAd
                     dialog.dismiss();
                 }
             });
+                }
+            });
+
+            btnEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialogOptionMenu.dismiss();
+                    Fragment fragment = new EditTanggapanFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("id_tanggapan", tanggapanModelList.get(getAdapterPosition()).getIdTanggapan());
+                    bundle.putString("isi_tanggapan", tanggapanModelList.get(getAdapterPosition()).getIsiTanggapan());
+                    bundle.putString("foto", tanggapanModelList.get(getAdapterPosition()).getFotoTanggapan());
+                    bundle.putString("status_tanggapan", tanggapanModelList.get(getAdapterPosition()).getStatusTanggapan());
+                    bundle.putString("id_pengaduan", tanggapanModelList.get(getAdapterPosition()).getIdPengaduan());
+                    fragment.setArguments(bundle);
+                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.frame_admin_container, fragment).commit();
+                }
+            });
+
 
 
         }
