@@ -8,17 +8,6 @@
     tools:context=".FragmentAdmin.AdminHomeFragment">
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_add"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="@dimen/_30sdp"
-        android:layout_marginRight="@dimen/_20sdp"
-        app:backgroundTint="@color/main"/>
-
     <TextView
         android:id="@+id/title1"
         android:layout_width="match_parent"

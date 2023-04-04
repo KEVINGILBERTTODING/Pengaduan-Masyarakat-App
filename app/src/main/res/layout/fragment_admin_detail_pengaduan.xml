@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/main"
+    tools:context=".FragmentAdmin.AdminDetailPengaduanFragment">
+
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:fontFamily="@font/popmed"
+        android:text="Detail Pengaduan"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13sdp" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/container_login"
+        android:layout_below="@+id/title1"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvIsiPengaduan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/popsem"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    app:cardElevation="@null"
+                    android:id="@+id/cvStatusPengaduan"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="@dimen/_5sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cvStatus"
+                            app:cardCornerRadius="@dimen/_5sdp"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp">
+                            <ImageView
+                                android:id="@+id/icStatus"
+                                android:layout_width="@dimen/_15sdp"
+                                android:src="@drawable/hammer"
+                                android:layout_gravity="center"
+                                android:layout_height="@dimen/_15sdp"/>
+                        </androidx.cardview.widget.CardView>
+
+
+                        <TextView
+                            android:id="@+id/tvStatusPengaduan"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/popmed"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_toRightOf="@id/cvStatus"
+                            android:text="ddasdad"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    app:cardElevation="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/foto1"
+                        android:scaleType="fitXY"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    app:cardElevation="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true"
+
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/foto2"
+                        android:layout_width="match_parent"
+                        android:scaleType="fitXY"
+                        android:layout_height="@dimen/_100sdp"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    app:cardElevation="@dimen/_5sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/foto3"
+                        android:layout_width="match_parent"
+                        android:scaleType="fitXY"
+                        android:layout_height="@dimen/_100sdp"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    app:contentPadding="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    app:cardUseCompatPadding="true"
+                    app:cardElevation="@dimen/_5sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:text="Deskripsi Pengaduan"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:background="@color/gray"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_height="@dimen/_2sdp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:text="Isi Laporan"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <EditText
+                            android:id="@+id/etIsiLaporan"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:textSize="@dimen/_10sdp"
+                            android:textColor="@color/black"
+
+                            android:padding="@dimen/_5sdp"
+                            android:gravity="start"
+                            android:background="@drawable/container_edittext2"
+                            android:fontFamily="@font/popmed"
+                            android:text="dasdsadasdas"
+                            android:lines="3"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:text="Jenis"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <EditText
+                            android:id="@+id/etJenisLaporan"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:textSize="@dimen/_10sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:gravity="start"
+
+                            android:editable="false"
+
+                            android:background="@drawable/container_edittext2"
+                            android:fontFamily="@font/popmed"
+                            android:text="dasdsadasdas"
+                            android:lines="2"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:text="Tanggal"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <EditText
+                            android:id="@+id/etTanggal"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:textSize="@dimen/_10sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:editable="false"
+                            android:gravity="start"
+                            android:textColor="@color/black"
+                            android:background="@drawable/container_edittext2"
+                            android:fontFamily="@font/popmed"
+                            android:lines="1"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:text="Lokasi"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <EditText
+                            android:id="@+id/etKelurahan"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:textSize="@dimen/_10sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:gravity="start"
+                            android:editable="false"
+                            android:background="@drawable/container_edittext2"
+                            android:fontFamily="@font/popmed"
+                            android:lines="1"/>
+
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/popsem"
+                    android:text="Tanggapan"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTanggapan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    app:cornerRadius="@dimen/_5sdp"
+                    app:icon="@drawable/ic_add"
+                    app:backgroundTint="@color/blue"
+                    android:text="Tambah tanggapan"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTanggapan"
+                    android:layout_width="match_parent"
+                    android:padding="@dimen/_5sdp"
+                    android:background="@drawable/container_edittext2"
+                    tools:listitem="@layout/layout_all_pengaduan"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+
+            </LinearLayout>
+
+
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
