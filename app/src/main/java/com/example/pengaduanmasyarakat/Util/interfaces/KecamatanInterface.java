@@ -27,4 +27,11 @@ public interface KecamatanInterface {
     Call<KecamatanModel>insertKecamatan(
             @Field("kecamatan") String kecamtan
     );
+
+    @FormUrlEncoded
+    @POST("admin/manajemendata/updateKecamatan")
+    Call<KecamatanModel>updateKecamatan(
+            @Field("id_kecamatan") String idKecamatan,
+            @Field("kecamatan") String kecamatan
+    );
 }

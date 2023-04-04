@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pengaduanmasyarakat.FragmentAdmin.UpdateKecamatanFragment;
 import com.example.pengaduanmasyarakat.Model.KecamatanModel;
 import com.example.pengaduanmasyarakat.R;
 import com.example.pengaduanmasyarakat.Util.DataApi;
@@ -56,7 +60,25 @@ public class AllKecamatanAdapter extends RecyclerView.Adapter<AllKecamatanAdapte
                 dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                 final Button btnDelete, btnEdit;
                 btnDelete = dialog.findViewById(R.id.btnDeleteUser);
+                btnEdit = dialog.findViewById(R.id.btnEditUser);
                 dialog.show();
+
+
+                btnEdit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Fragment fragment = new UpdateKecamatanFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("id_kecamatan", kecamatanModelList.get(position).getIdKecamtan());
+                        bundle.putString("kecamatan", kecamatanModelList.get(position).getKecamatan());
+                        fragment.setArguments(bundle);
+                        ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.frame_admin_container, fragment)
+                                .addToBackStack(null)
+                                .commit();
+                        dialog.dismiss();
+                    }
+                });
 
 
                 btnDelete.setOnClickListener(new View.OnClickListener() {
