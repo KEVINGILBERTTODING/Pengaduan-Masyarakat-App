@@ -1,5 +1,6 @@
 # Pengaduan-Masyarakat-App🦀
-🦀Aplikasi pengaduan masyarakat berbasis android, menggunakan framework Codeigniter sebagai back-end
+Aplikasi pengaduan masyarakat berbasis android, aplikasi ini menerapkan konsep object oriented programming dan menggunakan framework Codeigniter sebagai back-end
+https://github.com/KEVINGILBERTTODING/PengaduanMasyarakat
 
 Tampilan Aplikasi 😍🚀
 
