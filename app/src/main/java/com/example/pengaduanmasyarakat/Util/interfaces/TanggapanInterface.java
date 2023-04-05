@@ -44,4 +44,19 @@ public interface TanggapanInterface{
                 @Field("status_pengaduan") String statusPengaduan
         );
 
+        @FormUrlEncoded
+        @POST("admin/tanggapan/updatetanggapan2")
+        Call<TanggapanModel>updateTanggapan2(
+                @Field("isi_tanggapan") String isiTanggapan,
+                @Field("id_user") String idUser,
+                @Field("id_tanggapan") String idTanggapan
+        );
+
+        @Multipart
+        @POST("admin/tanggapan/updatetanggapan1")
+        Call<TanggapanModel>updateTanggapan1(
+                @PartMap Map<String, RequestBody>textData,
+                @Part MultipartBody.Part image
+        );
+
 }

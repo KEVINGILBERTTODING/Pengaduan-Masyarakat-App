@@ -99,7 +99,6 @@
 
                             <ImageView
                                 android:id="@+id/imgPrev1"
-                                android:visibility="gone"
                                 android:layout_width="@dimen/_60sdp"
                                 android:layout_height="@dimen/_60sdp"/>
 
@@ -130,6 +129,7 @@
                             android:layout_alignParentBottom="true"
                             android:layout_marginLeft="@dimen/_5sdp"
                             android:maxLength="50"
+                            android:visibility="gone"
                             android:fontFamily="@font/popmed"
                             android:textSize="@dimen/_9sdp"/>
                     </RelativeLayout>

@@ -185,7 +185,6 @@
                             android:inputType="textMultiLine"
                             android:textSize="@dimen/_10sdp"
                             android:textColor="@color/black"
-
                             android:padding="@dimen/_5sdp"
                             android:gravity="start"
                             android:background="@drawable/container_edittext2"
@@ -212,6 +211,7 @@
                             android:textSize="@dimen/_10sdp"
                             android:padding="@dimen/_5sdp"
                             android:gravity="start"
+                            android:textColor="@color/black"
 
                             android:editable="false"
 
@@ -261,6 +261,7 @@
                             android:inputType="textMultiLine"
                             android:textSize="@dimen/_10sdp"
                             android:padding="@dimen/_5sdp"
+                            android:textColor="@color/black"
                             android:gravity="start"
                             android:editable="false"
                             android:background="@drawable/container_edittext2"

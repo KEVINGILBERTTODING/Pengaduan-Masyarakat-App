@@ -186,6 +186,7 @@
                             android:textSize="@dimen/_10sdp"
                             android:padding="@dimen/_5sdp"
                             android:gravity="start"
+                            android:textColor="@color/black"
                             android:background="@drawable/container_edittext2"
                             android:fontFamily="@font/popmed"
                             android:text="dasdsadasdas"
@@ -208,10 +209,10 @@
                             android:layout_height="wrap_content"
                             android:inputType="textMultiLine"
                             android:textSize="@dimen/_10sdp"
+                            android:textColor="@color/black"
                             android:padding="@dimen/_5sdp"
                             android:gravity="start"
                             android:editable="false"
-
                             android:background="@drawable/container_edittext2"
                             android:fontFamily="@font/popmed"
                             android:text="dasdsadasdas"
@@ -234,6 +235,7 @@
                             android:inputType="textMultiLine"
                             android:textSize="@dimen/_10sdp"
                             android:padding="@dimen/_5sdp"
+                            android:textColor="@color/black"
                             android:editable="false"
                             android:gravity="start"
                             android:background="@drawable/container_edittext2"
@@ -258,11 +260,11 @@
                             android:textSize="@dimen/_10sdp"
                             android:padding="@dimen/_5sdp"
                             android:gravity="start"
+                            android:textColor="@color/black"
                             android:editable="false"
                             android:background="@drawable/container_edittext2"
                             android:fontFamily="@font/popmed"
                             android:lines="1"/>
-
 
 
                     </androidx.appcompat.widget.LinearLayoutCompat>

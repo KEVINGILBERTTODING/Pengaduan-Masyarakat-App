@@ -28,6 +28,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.pengaduanmasyarakat.Fragment.user.AdminDetailPengaduanFragment;
 import com.example.pengaduanmasyarakat.Model.PengaduanModel;
 import com.example.pengaduanmasyarakat.Model.TanggapanModel;
@@ -56,8 +58,8 @@ public class EditTanggapanFragment extends Fragment {
     TextView tvDataValid;
     EditText etPathImage;
     private File file1;
-
     SharedPreferences sharedPreferences;
+
     String idPengaduan, isiLaporan, namaKelurahan, statusPengaduan, tglPengaduan, foto1, foto2, foto3, jenis;
 
 
@@ -68,6 +70,7 @@ public class EditTanggapanFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_edit_tanggapan, container, false);
+        sharedPreferences = getContext().getSharedPreferences("user_data", Context.MODE_PRIVATE);
 
         etTanggapan = view.findViewById(R.id.etIsiTanggapan);
         btnSimpan = view.findViewById(R.id.btnSubmitTanggapan);
@@ -77,35 +80,15 @@ public class EditTanggapanFragment extends Fragment {
         btnDeleteTanggapan = view.findViewById(R.id.btnDeleteTanggapan);
 
 
-        sharedPreferences = getContext().getSharedPreferences("user_data", Context.MODE_PRIVATE);
+        Glide.with(getContext())
+                .load(getArguments().getString("foto"))
+                .skipMemoryCache(true)
+                .override(200,200)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .dontAnimate()
+                .into(imgPreview);
 
-//        idPengaduan = getArguments().getString("id_pengaduan");
-//        isiLaporan = getArguments().getString("isi_laporan");
-//        namaKelurahan = getArguments().getString("kelurahan");
-//        statusPengaduan = getArguments().getString("status_pengaduan");
-//        tglPengaduan = getArguments().getString("tgl_pengaduan");
-//        foto1 = getArguments().getString("foto");
-//        foto2 = getArguments().getString("foto1");
-//        foto3 = getArguments().getString("foto2");
-//        jenis = getArguments().getString("jenis");
-
-
-//        bundle.putString("id_tanggapan", tanggapanModelList.get(getAdapterPosition()).getIdTanggapan());
-//        bundle.putString("isi_tanggapan", tanggapanModelList.get(getAdapterPosition()).getIsiTanggapan());
-//        bundle.putString("foto", tanggapanModelList.get(getAdapterPosition()).getFotoTanggapan());
-//        bundle.putString("status_tanggapan", tanggapanModelList.get(getAdapterPosition()).getStatusTanggapan());
-//        bundle.putString("id_pengaduan", tanggapanModelList.get(getAdapterPosition()).getIdPengaduan());
-
-
-        //        idPengaduan = getArguments().getString("id_pengaduan");
-//        isiLaporan = getArguments().getString("isi_laporan");
-//        namaKelurahan = getArguments().getString("kelurahan");
-//        statusPengaduan = getArguments().getString("status_pengaduan");
-//        tglPengaduan = getArguments().getString("tgl_pengaduan");
-//        foto1 = getArguments().getString("foto");
-//        foto2 = getArguments().getString("foto1");
-//        foto3 = getArguments().getString("foto2");
-//        jenis = getArguments().getString("jenis");
+        etTanggapan.setText(getArguments().getString("isi_tanggapan"));
 
 
 
@@ -224,6 +207,8 @@ public class EditTanggapanFragment extends Fragment {
 
 
 
+
+
         //        Test cek izin mengakses file external
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 200);
@@ -241,104 +226,95 @@ public class EditTanggapanFragment extends Fragment {
             }
         });
 
-//        btnSimpan.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (etTanggapan.getText().toString().isEmpty()) {
-//                    Toasty.error(getContext(), "Field isi tanggapan tidak boleh kosong", Toasty.LENGTH_SHORT).show();
-//                } else if (etPathImage.getText().toString().isEmpty()) {
-//                    Toasty.error(getContext(), "Gambar tidak boleh kosong", Toasty.LENGTH_SHORT).show();
-//
-//                }else {
-//                    ProgressDialog pd = new ProgressDialog(getContext());
-//                    pd.setTitle("Menyimpan data...");
-//                    pd.setCanceledOnTouchOutside(false);
-//                    pd.show();
-//
-//                    Map map = new HashMap();
-//                    map.put("isi_tanggapan", RequestBody.create(MediaType.parse("text/plain"), etTanggapan.getText().toString()));
-//                    map.put("status_tanggapan", RequestBody.create(MediaType.parse("text/plain"), statusPengaduan));
-//                    map.put("id_pengaduan", RequestBody.create(MediaType.parse("text/plain"), idPengaduan));
-//                    map.put("id_user", RequestBody.create(MediaType.parse("text/plain"), sharedPreferences.getString("user_id", null)));
-//
-//                    // membuat requestbody file image
-//                    RequestBody requestBody1 = RequestBody.create(MediaType.parse("image/*"), file1);
-//                    MultipartBody.Part gambar = MultipartBody.Part.createFormData("foto", file1.getName(), requestBody1);
-//
-//                    TanggapanInterface ti = DataApi.getClient().create(TanggapanInterface.class);
-//                    ti.insertTanggapan(
-//                            map,
-//                            gambar
-//                    ).enqueue(new Callback() {
-//                        @Override
-//                        public void onResponse(Call call, Response response) {
-//
-//                            if (response.isSuccessful()) {
-//                                pd.dismiss();
-//                                Toasty.success(getContext(), "Berhasil menambahkan tanggapan", Toasty.LENGTH_SHORT).show();
-//                                Fragment fragment = new AdminDetailPengaduanFragment();
-//                                Bundle bundle = new Bundle();
-//
-//                                bundle.putString("id_pengaduan", idPengaduan);
-//                                bundle.putString("isi_laporan", isiLaporan);
-//                                bundle.putString("kelurahan", namaKelurahan);
-//                                bundle.putString("status_pengaduan", statusPengaduan);
-//                                bundle.putString("tgl_pengaduan", tglPengaduan);
-//                                bundle.putString("foto", foto1);
-//                                bundle.putString("foto1", foto2);
-//                                bundle.putString("foto2", foto3);
-//                                bundle.putString("jenis", jenis);
-//                                fragment.setArguments(bundle);
-//                                getFragmentManager().beginTransaction().replace(R.id.frame_admin_container, fragment).commit();
-//                            }else {
-//                                pd.dismiss();
-//                                Toasty.error(getContext(), "gagal", Toasty.LENGTH_SHORT).show();
-//
-//                                Fragment fragment = new AdminDetailPengaduanFragment();
-//                                Bundle bundle = new Bundle();
-//
-//                                bundle.putString("id_pengaduan", idPengaduan);
-//                                bundle.putString("isi_laporan", isiLaporan);
-//                                bundle.putString("kelurahan", namaKelurahan);
-//                                bundle.putString("status_pengaduan", getArguments().getString("status_pengaduan"));
-//                                bundle.putString("tgl_pengaduan", tglPengaduan);
-//                                bundle.putString("foto", foto1);
-//                                bundle.putString("foto1", foto2);
-//                                bundle.putString("foto2", foto3);
-//                                bundle.putString("jenis", jenis);
-//                                fragment.setArguments(bundle);
-//                                getFragmentManager().beginTransaction().replace(R.id.frame_admin_container, fragment).commit();
-//
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call call, Throwable t) {
-//                            pd.dismiss();
-//                            Toasty.error(getContext(), "gagal", Toasty.LENGTH_SHORT).show();
-//                            Fragment fragment = new AdminDetailPengaduanFragment();
-//                            Bundle bundle = new Bundle();
-//
-//                            bundle.putString("id_pengaduan", idPengaduan);
-//                            bundle.putString("isi_laporan", isiLaporan);
-//                            bundle.putString("kelurahan", namaKelurahan);
-//                            bundle.putString("status_pengaduan", getArguments().getString("status_pengaduan"));
-//                            bundle.putString("tgl_pengaduan", tglPengaduan);
-//                            bundle.putString("foto", foto1);
-//                            bundle.putString("foto1", foto2);
-//                            bundle.putString("foto2", foto3);
-//                            bundle.putString("jenis", jenis);
-//                            fragment.setArguments(bundle);
-//                            getFragmentManager().beginTransaction().replace(R.id.frame_admin_container, fragment).commit();
-//
-//
-//                        }
-//                    });
-//
-//
-//                }
-//            }
-//        });
+        btnSimpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (etTanggapan.getText().toString().isEmpty()){
+                    Toasty.error(getContext(), "Field tidak boleh kosong", Toasty.LENGTH_SHORT).show();
+                }else {
+                    ProgressDialog pd = new ProgressDialog(getContext());
+                    pd.setTitle("Menyimpan data...");
+                    pd.setCanceledOnTouchOutside(false);
+                    pd.show();
+
+                    if (etPathImage.getText().toString().isEmpty()) {
+                        TanggapanInterface tanggapanInterface = DataApi.getClient().create(TanggapanInterface.class);
+                        tanggapanInterface.updateTanggapan2(
+                                etTanggapan.getText().toString(),
+                                sharedPreferences.getString("user_id", null),
+                                getArguments().getString("id_tanggapan")
+                        ).enqueue(new Callback<TanggapanModel>() {
+                            @Override
+                            public void onResponse(Call<TanggapanModel> call, Response<TanggapanModel> response) {
+                                TanggapanModel tanggapanModel = response.body();
+                                if (response.isSuccessful() && tanggapanModel.getStatus().equals("success")) {
+                                    Toasty.success(getContext(), "Berhasil mengubah data", Toasty.LENGTH_SHORT).show();
+                                    getFragmentManager().popBackStack();
+                                    pd.dismiss();
+
+                                }else {
+                                    Toasty.error(getContext(), "Gagal mengubah data", Toasty.LENGTH_SHORT).show();
+                                    getFragmentManager().popBackStack();
+                                    pd.dismiss();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<TanggapanModel> call, Throwable t) {
+                                Toasty.error(getContext(), "Gagal mengubah data", Toasty.LENGTH_SHORT).show();
+                                getFragmentManager().popBackStack();
+                                pd.dismiss();
+
+                            }
+                        });
+                    }
+                    else if (etPathImage.getText().toString() != "") {
+                        // CREATE REQUEST BODY
+                        Map map = new HashMap();
+                        map.put("isi_tanggapan", RequestBody.create(MediaType.parse("text/plain"), etTanggapan.getText().toString()));
+                        map.put("id_user", RequestBody.create(MediaType.parse("text/plain"), sharedPreferences.getString("user_id", null)));
+                        map.put("id_tanggapan", RequestBody.create(MediaType.parse("text/plain"), getArguments().getString("id_tanggapan")));
+
+                        RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file1);
+                        MultipartBody.Part gambar = MultipartBody.Part.createFormData("foto", file1.getName(),requestBody);
+
+
+
+                        TanggapanInterface tanggapanInterface = DataApi.getClient().create(TanggapanInterface.class);
+                        tanggapanInterface.updateTanggapan1(
+                                map,
+                                gambar
+                        ).enqueue(new Callback() {
+                            @Override
+                            public void onResponse(Call call, Response response) {
+
+                                if (response.isSuccessful()) {
+                                    Toasty.success(getContext(), "Berhasil mengubah data", Toasty.LENGTH_SHORT).show();
+                                    getFragmentManager().popBackStack();
+                                    pd.dismiss();
+                                }else {
+                                    Toasty.error(getContext(), "Gagal mengubah data", Toasty.LENGTH_SHORT).show();
+                                    getFragmentManager().popBackStack();
+                                    pd.dismiss();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call call, Throwable t) {
+                                Toasty.error(getContext(), "Gagal mengubah data", Toasty.LENGTH_SHORT).show();
+                                getFragmentManager().popBackStack();
+                                pd.dismiss();
+                            }
+                        });
+
+
+                    }
+
+                }
+            }
+        });
+
+
 
 
 
@@ -352,7 +328,6 @@ public class EditTanggapanFragment extends Fragment {
         if (resultCode == RESULT_OK && data != null) {
             Uri uri = data.getData();
             if (requestCode == 1) {
-                imgPreview.setVisibility(View.VISIBLE);
                 imgPreview.setImageURI(uri);
                 file1 = new File(getRealPathFromUri(uri));
                 etPathImage.setText(file1.getName());
