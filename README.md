@@ -1,5 +1,5 @@
 # Pengaduan-Masyarakat-App🦀
-🦀Aplikasi pengaduan masyarakat berbasis android
+🦀Aplikasi pengaduan masyarakat berbasis android, menggunakan framework Codeigniter sebagai back-end
 
 Tampilan Aplikasi 😍🚀
 
