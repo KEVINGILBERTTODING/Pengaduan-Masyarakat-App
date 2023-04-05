@@ -39,7 +39,7 @@ public class AdminHomeFragment extends Fragment {
     SharedPreferences sharedPreferences;
     PengaduanInterface pengaduanInterface;
     List<PengaduanModel> pengaduanModelList;
-    CardView cvMenuProses, cvMenuSelesai, cvMenuValid, cvMenuPengerjaan, cvMenuBlmDitgp, cvMnuTdkValid, cvMenuLaporan, cvMnjmData;
+    CardView cvMenuProses, cvMenuSelesai, cvMenuValid, cvMenuPengerjaan, cvMenuBlmDitgp, cvMnuTdkValid, cvMenuLaporan, cvMnjmData, cvSaran;
 
 
 
@@ -62,6 +62,7 @@ public class AdminHomeFragment extends Fragment {
         cvMnuTdkValid = view.findViewById(R.id.cvMenuTdkalid);
         cvMenuLaporan = view.findViewById(R.id.cvMenuLaporan);
         cvMnjmData = view.findViewById(R.id.cvMnuMnjmData);
+        cvSaran = view.findViewById(R.id.cvMenuSaran);
 
 
 
@@ -191,6 +192,25 @@ public class AdminHomeFragment extends Fragment {
                         .commit();
             }
         });
+
+        cvSaran.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.frame_admin_container, new ListSaranFragment())
+                        .commit();
+            }
+        });
+
+        if (sharedPreferences.getString("jabatan", null).equals("administrator")) {
+            cvMnjmData.setVisibility(View.VISIBLE);
+        }else {
+            cvMnjmData.setVisibility(View.GONE);
+        }
+
+
+
 
 
 
