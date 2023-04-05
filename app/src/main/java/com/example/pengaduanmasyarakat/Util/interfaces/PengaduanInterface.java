@@ -88,5 +88,13 @@ public interface PengaduanInterface {
             @Query("date_end") String dateEnd
     );
 
+    @GET("admin/pengaduan/filterpengaduan")
+    Call<List<PengaduanModel>> filterPengaduanAdmin(
+
+            @Query("jenis") String jenis,
+            @Query("date_start") String dateStart,
+            @Query("date_end") String dateEnd
+    );
+
 
 }

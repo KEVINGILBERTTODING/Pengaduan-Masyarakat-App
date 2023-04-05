@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.pengaduanmasyarakat.Fragment.user.CreatePengaduanFragment;
-import com.example.pengaduanmasyarakat.Fragment.user.LaporanFragment;
 import com.example.pengaduanmasyarakat.Fragment.user.MyPengaduanFragment;
 import com.example.pengaduanmasyarakat.Model.PengaduanModel;
 import com.example.pengaduanmasyarakat.R;
@@ -188,7 +187,7 @@ public class AdminHomeFragment extends Fragment {
             public void onClick(View v) {
                 getFragmentManager().beginTransaction()
                         .addToBackStack(null)
-                        .replace(R.id.frame_container, new LaporanFragment())
+                        .replace(R.id.frame_admin_container, new LaporanFragment())
                         .commit();
             }
         });

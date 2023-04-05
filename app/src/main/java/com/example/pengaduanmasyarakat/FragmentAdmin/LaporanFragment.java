@@ -1,4 +1,4 @@
-package com.example.pengaduanmasyarakat.Fragment.user;
+package com.example.pengaduanmasyarakat.FragmentAdmin;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
@@ -9,12 +9,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.service.controls.actions.FloatAction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,11 +16,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.pengaduanmasyarakat.Adapter.MyPengaduanAdapter;
+import com.example.pengaduanmasyarakat.Adapter.PengaduanAdapter;
 import com.example.pengaduanmasyarakat.FileDownload;
 import com.example.pengaduanmasyarakat.Model.PengaduanModel;
 import com.example.pengaduanmasyarakat.R;
@@ -54,7 +52,7 @@ public class LaporanFragment extends Fragment {
     LinearLayoutManager linearLayoutManager;
     String jenis, dateMulai, dateSelesai;
 
-    MyPengaduanAdapter myPengaduanAdapter;
+    PengaduanAdapter myPengaduanAdapter;
     String[] statusSpinner = {"Semua", "Belum ditanggapi", "Proses", "valid", "Pengerjaan", "Selesai", "Tidak valid"};
 
     SharedPreferences sharedPreferences;
@@ -66,7 +64,7 @@ public class LaporanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View view = inflater.inflate(R.layout.fragment_laporan, container, false);
+       View view = inflater.inflate(R.layout.fragment_admin_laporan, container, false);
        btnDownload = view.findViewById(R.id.btnDownload);
        fabFilter = view.findViewById(R.id.fabFilter);
        rvLaporanPengaduan = view.findViewById(R.id.rvLaporanPengaduan);
@@ -219,13 +217,13 @@ public class LaporanFragment extends Fragment {
 
 
                             PengaduanInterface pengaduanInterface = DataApi.getClient().create(PengaduanInterface.class);
-                            pengaduanInterface.filterPengaduan(idMasyarakat, status,datePickerFrom.getText().toString(), datePickerTo.getText().toString())
+                            pengaduanInterface.filterPengaduanAdmin(status,datePickerFrom.getText().toString(), datePickerTo.getText().toString())
                                     .enqueue(new Callback<List<PengaduanModel>>() {
                                         @Override
                                         public void onResponse(Call<List<PengaduanModel>> call, Response<List<PengaduanModel>> response) {
                                             pengaduanModelList = response.body();
                                             if (pengaduanModelList.size() > 0) {
-                                                myPengaduanAdapter = new MyPengaduanAdapter(getContext(), pengaduanModelList);
+                                                myPengaduanAdapter = new PengaduanAdapter(getContext(), pengaduanModelList);
                                                 linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
                                                 rvLaporanPengaduan.setLayoutManager(linearLayoutManager);
                                                 rvLaporanPengaduan.setAdapter(myPengaduanAdapter);
@@ -255,8 +253,6 @@ public class LaporanFragment extends Fragment {
                                             rvLaporanPengaduan.setVisibility(View.GONE);
 
 
-
-
                                         }
                                     });
 
@@ -271,12 +267,11 @@ public class LaporanFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                String url = "http://"+DataApi.IP+"/pengaduan/laporanpengaduan/cetakLaporan/"+idMasyarakat+"/"+jenis+"/"+dateMulai+"/"+dateSelesai+"/";
+                String url = "http://"+DataApi.IP+"/pengaduan/laporanpengaduan/cetakLaporanAdmin/"+jenis+"/"+dateMulai+"/"+dateSelesai+"/";
                 String title = "Laporan_pengaduan";
                 String description = "Downloading PDF file";
                 String fileName = "Laporan_pengaduan.pdf";
-
-                Log.d(TAG, "onClick: " + url);
+                Log.d(TAG, "onClick: " +url);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (getActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
