@@ -5,8 +5,10 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -272,29 +274,9 @@ public class LaporanFragment extends Fragment {
             public void onClick(View v) {
 
                 String url = "http://"+DataApi.IP+"/pengaduan/laporanpengaduan/cetakLaporan/"+idMasyarakat+"/"+jenis+"/"+dateMulai+"/"+dateSelesai+"/";
-                String title = "Laporan_pengaduan";
-                String description = "Downloading PDF file";
-                String fileName = "Laporan_pengaduan.pdf";
-
-                Log.d(TAG, "onClick: " + url);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (getActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                        // permission not granted, request it
-                        String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                        // show popup for runtime permission
-                        requestPermissions(permissions, 1000);
-                    } else {
-
-                        FileDownload fileDownload = new FileDownload(getContext());
-                        fileDownload.downloadFile(url, title, description, fileName);
-                    }
-                } else {
-                    // system os is less then marshmallow
-                    // perform download
-                    FileDownload fileDownload = new FileDownload(getContext());
-                    fileDownload.downloadFile(url, title, description, fileName);
-                }
+               Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                startActivity(intent);
 
             }
         });
